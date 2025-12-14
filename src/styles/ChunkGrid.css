@@ -1,0 +1,120 @@
+.chunk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.chunk-tile {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chunk-tile:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: #2563eb;
+}
+
+.chunk-tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.chunk-id {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.chunk-word-count {
+  font-size: 12px;
+  color: #6b7280;
+  background-color: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.chunk-tile-snippet {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.chunk-tile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-field {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.card-label {
+  font-weight: 600;
+  color: #6b7280;
+  min-width: 60px;
+}
+
+.card-value {
+  color: #374151;
+  flex: 1;
+}
+
+.card-summary {
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.4;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* Relevance highlighting */
+.chunk-tile.relevance-2 {
+  border-color: #10b981;
+  background-color: #ecfdf5;
+}
+
+.chunk-tile.relevance-2:hover {
+  border-color: #059669;
+  box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+.chunk-tile.relevance-1 {
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+}
+
+.chunk-tile.relevance-1:hover {
+  border-color: #d97706;
+  box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
+}
+
+.chunk-tile.relevance-0 {
+  border-color: #e5e7eb;
+  background-color: white;
+  opacity: 0.7;
+}
+
+.chunk-grid-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7280;
+  font-size: 16px;
+}
+

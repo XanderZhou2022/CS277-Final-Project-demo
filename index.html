@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Filing Evidence Selection Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-header {
+            background-color: #1f2937;
+            color: white;
+            padding: 24px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .app-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .header-info {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 8px;
+        }
+
+        .info-label {
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .info-value {
+            font-weight: 400;
+        }
+
+        .question-banner {
+            background-color: #2563eb;
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .question-banner-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .question-banner-label {
+            font-weight: 600;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .question-banner-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .question-banner-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .question-banner-close:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .app-main {
+            flex: 1;
+            padding: 32px 20px;
+        }
+
+        .controls-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-toggle {
+            background-color: #f3f4f6;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-toggle.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .btn-toggle:hover {
+            background-color: #e5e7eb;
+        }
+
+        .btn-toggle.active:hover {
+            background-color: #1d4ed8;
+        }
+
+        .relevance-legend {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .relevance-legend:hover {
+            border-color: #2563eb;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .legend-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #374151;
+        }
+
+        .legend-title::after {
+            content: " (Click to sort by relevance)";
+            font-size: 12px;
+            font-weight: 400;
+            color: #6b7280;
+            margin-left: 8px;
+        }
+
+        .relevance-legend.sorted .legend-title::after {
+            content: " (Sorted - Click to reset)";
+            color: #2563eb;
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+        }
+
+        .legend-color.relevance-2 {
+            background-color: #10b981;
+        }
+
+        .legend-color.relevance-1 {
+            background-color: #f59e0b;
+        }
+
+        .legend-color.relevance-0 {
+            background-color: #e5e7eb;
+        }
+
+        .chunk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .chunk-tile {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chunk-tile:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            border-color: #2563eb;
+        }
+
+        .chunk-tile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .chunk-id {
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .chunk-word-count {
+            font-size: 12px;
+            color: #6b7280;
+            background-color: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .chunk-tile-snippet {
+            font-size: 13px;
+            color: #4b5563;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .chunk-tile-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-field {
+            display: flex;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .card-label {
+            font-weight: 600;
+            color: #6b7280;
+            min-width: 60px;
+        }
+
+        .card-value {
+            color: #374151;
+            flex: 1;
+        }
+
+        .card-summary {
+            font-size: 12px;
+            color: #4b5563;
+            line-height: 1.4;
+            margin-top: 4px;
+            padding-top: 8px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .chunk-tile.relevance-2 {
+            border-color: #10b981;
+            background-color: #ecfdf5;
+        }
+
+        .chunk-tile.relevance-2:hover {
+            border-color: #059669;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+        }
+
+        .chunk-tile.relevance-1 {
+            border-color: #f59e0b;
+            background-color: #fffbeb;
+        }
+
+        .chunk-tile.relevance-1:hover {
+            border-color: #d97706;
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
+        }
+
+        .chunk-tile.relevance-0 {
+            border-color: #e5e7eb;
+            background-color: white;
+            opacity: 0.7;
+        }
+
+        .chunk-grid-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .app-loading,
+        .app-error {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+        .app-error {
+            color: #dc2626;
+        }
+
+        .detail-panel-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .detail-panel {
+            background-color: white;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .detail-panel-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .detail-panel-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .detail-panel-close:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .detail-panel-content {
+            padding: 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .detail-section {
+            margin-bottom: 24px;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+
+        .detail-meta {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .detail-value {
+            color: #374151;
+        }
+
+        .detail-value.relevance-2 {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .detail-value.relevance-1 {
+            color: #d97706;
+            font-weight: 600;
+        }
+
+        .detail-value.relevance-0 {
+            color: #6b7280;
+        }
+
+        .detail-text-content {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #374151;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .comparison-panel-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .comparison-panel {
+            background-color: white;
+            border-radius: 12px;
+            max-width: 1400px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-panel-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .comparison-panel-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .comparison-panel-close:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .comparison-panel-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .comparison-column {
+            padding: 24px;
+            overflow-y: auto;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .comparison-column:last-child {
+            border-right: none;
+        }
+
+        .comparison-column h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .comparison-section {
+            margin-bottom: 24px;
+        }
+
+        .comparison-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .comparison-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-meta {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+
+        .comparison-meta strong {
+            color: #6b7280;
+            margin-right: 8px;
+        }
+
+        .relevance-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .relevance-badge.relevance-2 {
+            background-color: #ecfdf5;
+            color: #059669;
+        }
+
+        .relevance-badge.relevance-1 {
+            background-color: #fffbeb;
+            color: #d97706;
+        }
+
+        .relevance-badge.relevance-0 {
+            background-color: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .comparison-text {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #374151;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .card-field-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            align-items: flex-start;
+        }
+
+        .card-field-row strong {
+            color: #6b7280;
+            min-width: 100px;
+            font-weight: 600;
+        }
+
+        .card-field-row span {
+            color: #374151;
+            flex: 1;
+        }
+
+        .card-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #1e40af;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .comparison-panel-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-column {
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            
+            .comparison-column:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="app">
+        <div class="app-loading">Loading data...</div>
+    </div>
+
+    <script>
+        // Utility functions
+        function normalizeChunkId(id) {
+            return String(id);
+        }
+
+        function getWordCount(text) {
+            if (!text) return 0;
+            return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+        }
+
+        function getSnippet(text, maxLength = 80) {
+            if (!text) return '';
+            if (text.length <= maxLength) return text;
+            return text.substring(0, maxLength) + '...';
+        }
+
+        // Data loading
+        async function loadChunkData() {
+            try {
+                const chunkResponse = await fetch('data_overview/chunk_special_transformed.json');
+                if (!chunkResponse.ok) {
+                    throw new Error(`Failed to load chunk data: ${chunkResponse.statusText}`);
+                }
+                const chunkData = await chunkResponse.json();
+                
+                const example = chunkData[0];
+                
+                const cardsResponse = await fetch('data_overview/cards.json');
+                if (!cardsResponse.ok) {
+                    throw new Error(`Failed to load cards data: ${cardsResponse.statusText}`);
+                }
+                const cardsData = await cardsResponse.json();
+                
+                const cardMap = new Map();
+                cardsData.forEach(card => {
+                    const chunkId = normalizeChunkId(card.chunk_id);
+                    cardMap.set(chunkId, card);
+                });
+                
+                const chunks = [];
+                const textChunks = example.messages['Text chunks'] || {};
+                
+                Object.keys(textChunks).forEach(chunkId => {
+                    const normalizedId = normalizeChunkId(chunkId);
+                    const rawText = textChunks[chunkId];
+                    const card = cardMap.get(normalizedId);
+                    const qrel = example.qrel[chunkId] || 0;
+                    
+                    chunks.push({
+                        id: normalizedId,
+                        rawText,
+                        wordCount: getWordCount(rawText),
+                        qrel,
+                        card: card || null
+                    });
+                });
+                
+                chunks.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+                
+                return {
+                    question: example.messages.question,
+                    uuid: example.uuid,
+                    chunks,
+                    totalChunks: chunks.length
+                };
+            } catch (error) {
+                console.error('Error loading data:', error);
+                throw error;
+            }
+        }
+
+        // App state
+        let appData = null;
+        let showQuestion = false;
+        let isCardView = false;
+        let selectedChunk = null;
+        let showComparison = false;
+        let isSortedByRelevance = false;
+
+        // Render functions
+        function renderApp() {
+            const app = document.getElementById('app');
+            
+            if (!appData) {
+                app.innerHTML = '<div class="app-loading">Loading data...</div>';
+                return;
+            }
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Financial Filing Evidence Selection Demo</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">Company:</span>
+                                <span class="info-value">Ameren Corporation Filing (Demo)</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Period:</span>
+                                <span class="info-value">FY 2023</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Total Chunks:</span>
+                                <span class="info-value">${appData.totalChunks}</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                ${showQuestion ? `
+                    <div class="question-banner">
+                        <div class="question-banner-content">
+                            <div class="question-banner-label">Question:</div>
+                            <div class="question-banner-text">${appData.question}</div>
+                        </div>
+                        <button class="question-banner-close" onclick="handleCloseQuestion()" aria-label="Close">×</button>
+                    </div>
+                ` : ''}
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="controls-bar">
+                            ${!showQuestion ? `
+                                <button class="btn btn-primary" onclick="handleAskQuestion()">Ask the Question</button>
+                            ` : ''}
+                            <button class="btn btn-toggle ${isCardView ? 'active' : ''}" onclick="handleToggleCardView()">
+                                ${isCardView ? '📋 Card View' : '📄 Text View'}
+                            </button>
+                        </div>
+
+                        ${showQuestion ? `
+                            <div class="relevance-legend ${isSortedByRelevance ? 'sorted' : ''}" onclick="handleSortByRelevance()">
+                                <div class="legend-title">Relevance Legend:</div>
+                                <div class="legend-items">
+                                    <div class="legend-item">
+                                        <span class="legend-color relevance-2"></span>
+                                        <span>Highly Relevant (qrel=2)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color relevance-1"></span>
+                                        <span>Partially Relevant (qrel=1)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color relevance-0"></span>
+                                        <span>Not Relevant (qrel=0)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <div class="chunk-grid" id="chunkGrid">
+                            ${renderChunkGrid()}
+                        </div>
+                    </div>
+                </main>
+
+                ${selectedChunk && !showComparison ? renderDetailPanel() : ''}
+                ${selectedChunk && showComparison ? renderComparisonPanel() : ''}
+            `;
+        }
+
+        function renderChunkGrid() {
+            if (!appData || !appData.chunks || appData.chunks.length === 0) {
+                return '<div class="chunk-grid-empty"><p>No chunks available.</p></div>';
+            }
+
+            // Get chunks to display (sorted if needed)
+            let chunksToDisplay = [...appData.chunks];
+            if (isSortedByRelevance) {
+                chunksToDisplay = [...appData.chunks].sort((a, b) => {
+                    // Sort by relevance: 2 (highest) > 1 > 0 (lowest)
+                    return b.qrel - a.qrel;
+                });
+            }
+
+            return chunksToDisplay.map(chunk => {
+                const relevanceClass = showQuestion ? `relevance-${chunk.qrel}` : '';
+                
+                const content = isCardView && chunk.card ? `
+                    <div class="chunk-tile-card">
+                        <div class="card-field">
+                            <span class="card-label">Topic:</span>
+                            <span class="card-value">${chunk.card.card.topic || 'N/A'}</span>
+                        </div>
+                        <div class="card-field">
+                            <span class="card-label">Section:</span>
+                            <span class="card-value">${chunk.card.card.section || 'N/A'}</span>
+                        </div>
+                        ${chunk.card.card.entities && chunk.card.card.entities.length > 0 ? `
+                            <div class="card-field">
+                                <span class="card-label">Entities:</span>
+                                <span class="card-value">
+                                    ${chunk.card.card.entities.slice(0, 3).join(', ')}
+                                    ${chunk.card.card.entities.length > 3 ? '...' : ''}
+                                </span>
+                            </div>
+                        ` : ''}
+                        ${chunk.card.card.metrics && chunk.card.card.metrics.length > 0 ? `
+                            <div class="card-field">
+                                <span class="card-label">Metrics:</span>
+                                <span class="card-value">
+                                    ${chunk.card.card.metrics.slice(0, 2).join(', ')}
+                                    ${chunk.card.card.metrics.length > 2 ? '...' : ''}
+                                </span>
+                            </div>
+                        ` : ''}
+                        ${chunk.card.card.summary ? `
+                            <div class="card-summary">${getSnippet(chunk.card.card.summary, 100)}</div>
+                        ` : ''}
+                    </div>
+                ` : `
+                    <div class="chunk-tile-snippet">${getSnippet(chunk.rawText, 80)}</div>
+                `;
+
+                return `
+                    <div class="chunk-tile ${relevanceClass}" onclick="handleChunkClick('${chunk.id}')">
+                        <div class="chunk-tile-header">
+                            <span class="chunk-id">Chunk ${chunk.id}</span>
+                            <span class="chunk-word-count">${chunk.wordCount} words</span>
+                        </div>
+                        ${content}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderDetailPanel() {
+            if (!selectedChunk) return '';
+            
+            const chunk = selectedChunk;
+            return `
+                <div class="detail-panel-overlay" onclick="handleClosePanel()">
+                    <div class="detail-panel" onclick="event.stopPropagation()">
+                        <div class="detail-panel-header">
+                            <h2>Chunk ${chunk.id} Details</h2>
+                            <button class="detail-panel-close" onclick="handleClosePanel()" aria-label="Close">×</button>
+                        </div>
+                        <div class="detail-panel-content">
+                            <div class="detail-section">
+                                <div class="detail-meta">
+                                    <span class="detail-label">Word Count:</span>
+                                    <span class="detail-value">${chunk.wordCount} words</span>
+                                </div>
+                                ${chunk.qrel !== undefined ? `
+                                    <div class="detail-meta">
+                                        <span class="detail-label">Relevance:</span>
+                                        <span class="detail-value relevance-${chunk.qrel}">
+                                            ${chunk.qrel === 2 ? 'Highly Relevant' : 
+                                              chunk.qrel === 1 ? 'Partially Relevant' : 
+                                              'Not Relevant'}
+                                        </span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <div class="detail-section">
+                                <h3>Raw Text</h3>
+                                <div class="detail-text-content">${escapeHtml(chunk.rawText || 'No text available.')}</div>
+                            </div>
+                            ${chunk.card && chunk.card.card ? `
+                                <div class="detail-section">
+                                    <h3>Summary</h3>
+                                    <div class="detail-text-content">${escapeHtml(chunk.card.card.summary || 'No summary available yet.')}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderComparisonPanel() {
+            if (!selectedChunk || !selectedChunk.card) return '';
+            
+            const chunk = selectedChunk;
+            const card = chunk.card.card;
+            
+            return `
+                <div class="comparison-panel-overlay" onclick="handleClosePanel()">
+                    <div class="comparison-panel" onclick="event.stopPropagation()">
+                        <div class="comparison-panel-header">
+                            <h2>Chunk ${chunk.id} - Side-by-Side Comparison</h2>
+                            <button class="comparison-panel-close" onclick="handleClosePanel()" aria-label="Close">×</button>
+                        </div>
+                        <div class="comparison-panel-content">
+                            <div class="comparison-column">
+                                <h3>Original Chunk</h3>
+                                <div class="comparison-section">
+                                    <div class="comparison-meta">
+                                        <strong>Chunk ID:</strong> ${chunk.id}
+                                    </div>
+                                    <div class="comparison-meta">
+                                        <strong>Word Count:</strong> ${chunk.wordCount} words
+                                    </div>
+                                    <div class="comparison-meta">
+                                        <strong>Relevance:</strong>
+                                        <span class="relevance-badge relevance-${chunk.qrel}">
+                                            ${chunk.qrel === 2 ? 'Highly Relevant' : 
+                                              chunk.qrel === 1 ? 'Partially Relevant' : 
+                                              'Not Relevant'}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="comparison-section">
+                                    <h4>Raw Text</h4>
+                                    <div class="comparison-text">${escapeHtml(chunk.rawText || 'No text available.')}</div>
+                                </div>
+                            </div>
+                            <div class="comparison-column">
+                                <h3>Extracted Card</h3>
+                                <div class="comparison-section">
+                                    <div class="card-field-row">
+                                        <strong>Topic:</strong>
+                                        <span>${card.topic || 'N/A'}</span>
+                                    </div>
+                                    <div class="card-field-row">
+                                        <strong>Section:</strong>
+                                        <span>${card.section || 'N/A'}</span>
+                                    </div>
+                                    ${card.period ? `
+                                        <div class="card-field-row">
+                                            <strong>Period:</strong>
+                                            <span>${card.period}</span>
+                                        </div>
+                                    ` : ''}
+                                    <div class="card-field-row">
+                                        <strong>Boilerplate:</strong>
+                                        <span>${card.boilerplate_flag ? 'Yes' : 'No'}</span>
+                                    </div>
+                                </div>
+                                ${card.entities && card.entities.length > 0 ? `
+                                    <div class="comparison-section">
+                                        <h4>Entities</h4>
+                                        <div class="card-list">
+                                            ${card.entities.map(entity => 
+                                                `<span class="card-tag">${escapeHtml(entity)}</span>`
+                                            ).join('')}
+                                        </div>
+                                    </div>
+                                ` : ''}
+                                ${card.metrics && card.metrics.length > 0 ? `
+                                    <div class="comparison-section">
+                                        <h4>Metrics</h4>
+                                        <div class="card-list">
+                                            ${card.metrics.map(metric => 
+                                                `<span class="card-tag">${escapeHtml(metric)}</span>`
+                                            ).join('')}
+                                        </div>
+                                    </div>
+                                ` : ''}
+                                ${card.numbers && card.numbers.length > 0 ? `
+                                    <div class="comparison-section">
+                                        <h4>Numbers</h4>
+                                        <div class="card-list">
+                                            ${card.numbers.map(number => 
+                                                `<span class="card-tag">${escapeHtml(String(number))}</span>`
+                                            ).join('')}
+                                        </div>
+                                    </div>
+                                ` : ''}
+                                ${card.summary ? `
+                                    <div class="comparison-section">
+                                        <h4>Summary</h4>
+                                        <div class="comparison-text">${escapeHtml(card.summary)}</div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Event handlers
+        function handleAskQuestion() {
+            showQuestion = true;
+            isSortedByRelevance = false; // Reset sorting when asking question
+            renderApp();
+        }
+
+        function handleCloseQuestion() {
+            showQuestion = false;
+            renderApp();
+        }
+
+        function handleToggleCardView() {
+            isCardView = !isCardView;
+            selectedChunk = null;
+            showComparison = false;
+            renderApp();
+        }
+
+        function handleChunkClick(chunkId) {
+            const chunk = appData.chunks.find(c => c.id === chunkId);
+            if (!chunk) return;
+            
+            selectedChunk = chunk;
+            showComparison = isCardView;
+            renderApp();
+        }
+
+        function handleClosePanel() {
+            selectedChunk = null;
+            showComparison = false;
+            renderApp();
+        }
+
+        function handleSortByRelevance() {
+            isSortedByRelevance = !isSortedByRelevance;
+            renderApp();
+        }
+
+        // Initialize app
+        loadChunkData()
+            .then(data => {
+                appData = data;
+                renderApp();
+            })
+            .catch(error => {
+                document.getElementById('app').innerHTML = `
+                    <div class="app-error">
+                        <p>Error loading data: ${error.message}</p>
+                        <p style="margin-top: 10px; font-size: 14px;">
+                            Make sure the JSON files are in the <code>data_overview/</code> directory relative to this HTML file.
+                        </p>
+                    </div>
+                `;
+            });
+    </script>
+</body>
+</html>
