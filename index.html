@@ -2952,7 +2952,8 @@
             decisionDetail: 0,
             stage2RoundList: 0,
             stage2ScoredChunks: 0,
-            stage2ChunkDetail: 0
+            stage2ChunkDetail: 0,
+            stage3EventList: 0
         };
         // Stage 2 state
         let stage2Data = null;
@@ -4643,6 +4644,53 @@
             renderApp();
         }
 
+        function scrollEventIntoView() {
+            const eventListEl = document.getElementById('eventList');
+            const eventEl = document.querySelector(`.event-item.active`);
+            
+            if (!eventListEl || !eventEl) return;
+            
+            // Get current scroll position
+            const currentScrollTop = eventListEl.scrollTop;
+            const containerHeight = eventListEl.clientHeight;
+            
+            // Find all event items to calculate relative position
+            const allEventItems = eventListEl.querySelectorAll('.event-item');
+            let elementOffsetTop = 0;
+            
+            // Calculate offset by summing heights of previous siblings
+            for (let i = 0; i < allEventItems.length; i++) {
+                if (allEventItems[i] === eventEl) {
+                    break;
+                }
+                elementOffsetTop += allEventItems[i].offsetHeight;
+            }
+            
+            // Calculate target scroll position to center the element
+            const elementHeight = eventEl.offsetHeight;
+            const targetScrollTop = elementOffsetTop - (containerHeight / 2) + (elementHeight / 2);
+            
+            // Clamp to valid scroll range
+            const maxScrollTop = eventListEl.scrollHeight - containerHeight;
+            const finalScrollTop = Math.max(0, Math.min(targetScrollTop, maxScrollTop));
+            
+            // Direct jump to target position (no smooth scrolling)
+            // Only scroll if the target is outside the visible area
+            const visibleTop = currentScrollTop;
+            const visibleBottom = currentScrollTop + containerHeight;
+            const elementTop = elementOffsetTop;
+            const elementBottom = elementOffsetTop + elementHeight;
+            
+            // Check if element is already visible in the current viewport
+            if (elementTop >= visibleTop && elementBottom <= visibleBottom) {
+                // Element is already visible, no need to scroll
+                return;
+            }
+            
+            // Direct jump to center the element (instant, no animation)
+            eventListEl.scrollTop = finalScrollTop;
+        }
+
         function handleStage3ChunkClick(chunkId) {
             if (!stage3Trace || !stage3Trace.events) return;
             const events = stage3Trace.events;
@@ -4838,7 +4886,7 @@
                                             <button class="btn btn-sm" onclick="handleStage3NextEvent()" ${stage3ActiveEventId !== null && stage3ActiveEventId >= events.length - 1 ? 'disabled' : ''}>Next ▶</button>
                                         </div>
                                     </div>
-                                    <div class="event-list" id="eventList">
+                                    <div class="event-list" id="eventList" onscroll="if (this.scrollTop !== undefined) savedScrollPositions.stage3EventList = this.scrollTop;">
                                         ${events.map((event, idx) => {
                                             const isActive = stage3ActiveEventId === idx;
                                             const before = event.local_order_before || [];
@@ -4958,13 +5006,12 @@
                 </main>
             `;
 
-            // Scroll active event into view
+            // Scroll to active event - use direct jump (no smooth scrolling)
+            // If we have a saved scroll position and current scroll is 0 (DOM just recreated),
+            // we'll use the saved position as reference, but still jump directly to the target
             if (stage3ActiveEventId !== null) {
                 setTimeout(() => {
-                    const eventEl = document.querySelector(`.event-item.active`);
-                    if (eventEl) {
-                        eventEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                    scrollEventIntoView();
                 }, 100);
             }
         }
