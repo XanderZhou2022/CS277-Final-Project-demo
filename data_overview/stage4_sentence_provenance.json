@@ -1,0 +1,60 @@
+{
+    "question": "What impact do weather-related events have on Ameren Corporation's reported revenue and margins?",
+    "sentence_provenance": [
+      {
+        "sentence_id": "s1",
+        "text": "Weather-related events have a significant impact on Ameren Corporation's reported revenue and margins, as evidenced by various factors across its operations.",
+        "source_chunks": ["81", "79", "82"],
+        "confidence": 0.90
+      },
+      {
+        "sentence_id": "s2",
+        "text": "In 2023, Ameren Missouri's electric margins were notably affected by warmer winter and milder summer temperatures, leading to a $57 million decrease in margins due to weather.",
+        "source_chunks": ["81"],
+        "confidence": 0.95
+      },
+      {
+        "sentence_id": "s3",
+        "text": "This was compounded by major storms causing customer outages, further decreasing retail sales volumes.",
+        "source_chunks": ["81", "86"],
+        "confidence": 0.90
+      },
+      {
+        "sentence_id": "s4",
+        "text": "However, regulatory changes and higher base rates provided some counterbalance, increasing margins by an estimated $57 million.",
+        "source_chunks": ["81", "80"],
+        "confidence": 0.85
+      },
+      {
+        "sentence_id": "s5",
+        "text": "Ameren Illinois also experienced changes in margins due to weather, but the impact was mitigated by increased base rates and infrastructure investments.",
+        "source_chunks": ["82", "83"],
+        "confidence": 0.85
+      },
+      {
+        "sentence_id": "s6",
+        "text": "The company's use of cost recovery mechanisms, such as those offsetting fuel and purchased power, helps stabilize margins against weather-related fluctuations.",
+        "source_chunks": ["79", "80", "67"],
+        "confidence": 0.90
+      },
+      {
+        "sentence_id": "s7",
+        "text": "Additionally, Ameren's strategic financial management, including regulatory asset recognition and decreased renewable development costs, helps manage the financial implications of weather events.",
+        "source_chunks": ["86", "105"],
+        "confidence": 0.80
+      },
+      {
+        "sentence_id": "s8",
+        "text": "Despite these challenges, Ameren maintained strong liquidity and financial stability through strategic investments and regulatory mechanisms.",
+        "source_chunks": ["63", "105"],
+        "confidence": 0.80
+      },
+      {
+        "sentence_id": "s9",
+        "text": "By balancing the effects of weather on demand with infrastructure investments and cost recovery mechanisms, Ameren can sustain its financial performance even in the face of adverse weather conditions.",
+        "source_chunks": ["80", "83", "67"],
+        "confidence": 0.85
+      }
+    ]
+  }
+
