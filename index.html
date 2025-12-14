@@ -695,6 +695,1602 @@
                 border-bottom: none;
             }
         }
+
+        /* Stage 1 Styles */
+        .stage1-container {
+            display: grid;
+            grid-template-columns: 300px 1fr 400px;
+            gap: 24px;
+            height: calc(100vh - 200px);
+            min-height: 600px;
+        }
+
+        .batch-list {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            overflow-y: auto;
+        }
+
+        .batch-list-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .batch-list-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: #f9fafb;
+        }
+
+        .batch-list-item:hover {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+        }
+
+        .batch-list-item.active {
+            border-color: #2563eb;
+            background-color: #dbeafe;
+        }
+
+        .batch-list-item-header {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .batch-list-item-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .batch-detail {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .batch-detail-header {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .batch-detail-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .batch-detail-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .chunk-section {
+            margin-bottom: 32px;
+        }
+
+        .chunk-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chunk-section-title.selected {
+            color: #059669;
+        }
+
+        .chunk-section-title.rejected {
+            color: #dc2626;
+        }
+
+        .chunk-grid-stage1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .chunk-chip {
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid;
+        }
+
+        .chunk-chip.selected {
+            background-color: #ecfdf5;
+            border-color: #10b981;
+            color: #059669;
+        }
+
+        .chunk-chip.selected:hover {
+            background-color: #d1fae5;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .chunk-chip.selected.ground-truth {
+            border-width: 3px;
+            border-color: #059669;
+            background-color: #d1fae5;
+            position: relative;
+        }
+
+        .chunk-chip.selected.ground-truth::before {
+            content: "Ground Truth";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #059669;
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .chunk-chip.selected.ground-truth {
+            border-width: 3px;
+            border-color: #059669;
+            background-color: #d1fae5;
+            position: relative;
+        }
+
+        .chunk-chip.selected.ground-truth::before {
+            content: "✓ Ground Truth";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #059669;
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .chunk-chip.rejected {
+            background-color: #fef2f2;
+            border-color: #ef4444;
+            color: #dc2626;
+        }
+
+        .chunk-chip.rejected:hover {
+            background-color: #fee2e2;
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .chunk-chip-id {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .chunk-chip-confidence {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .decision-detail-panel {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .decision-detail-panel.selected {
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+        }
+
+        .decision-detail-panel.rejected {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+        }
+
+        .decision-detail-panel.empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+
+        .decision-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .decision-detail-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .decision-detail-title.selected {
+            color: #059669;
+        }
+
+        .decision-detail-title.rejected {
+            color: #dc2626;
+        }
+
+        .decision-detail-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .decision-detail-close:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .decision-detail-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .decision-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .decision-detail-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .decision-detail-value {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .decision-reasons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .decision-reasons li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            line-height: 1.6;
+        }
+
+        .decision-reasons li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #6b7280;
+            font-weight: bold;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+        }
+
+        .stage-legend {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background-color: #f9fafb;
+            border-radius: 6px;
+        }
+
+        .stage-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .stage-legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+        }
+
+        .stage-legend-color.selected {
+            background-color: #10b981;
+            border-color: #10b981;
+        }
+
+        .stage-legend-color.rejected {
+            background-color: #ef4444;
+            border-color: #ef4444;
+        }
+
+        .chunk-original-text {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #374151;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 8px;
+        }
+
+        .chunk-summary-text {
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #374151;
+            margin-top: 8px;
+        }
+
+        .ground-truth-badge {
+            display: inline-block;
+            background-color: #059669;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 1400px) {
+            .stage1-container {
+                grid-template-columns: 250px 1fr 350px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .stage1-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .batch-list {
+                max-height: 300px;
+            }
+
+            .decision-detail-panel {
+                max-height: 400px;
+            }
+        }
+
+        /* Stage 2 Styles */
+        .sampling-overview-bar {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .sampling-metric {
+            display: flex;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .metric-label {
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .metric-value {
+            color: #111827;
+        }
+
+        .stage2-entry-content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .accepted-pool-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+
+        .chunk-pool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+        }
+
+        .chunk-pool-chip {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 13px;
+            text-align: center;
+            position: relative;
+        }
+
+        .chunk-pool-chip.ground-truth {
+            border-color: #059669;
+            background-color: #ecfdf5;
+        }
+
+        .gt-badge {
+            display: inline-block;
+            background-color: #059669;
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        .kfold-section {
+            text-align: center;
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .rounds-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .round-preview-card {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .round-preview-header {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .round-preview-stats {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .stage2-nav-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .stage2-rounds-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 400px;
+            gap: 24px;
+            height: calc(100vh - 200px);
+            min-height: 600px;
+        }
+
+        /* Stage 2 Round List Styles */
+        .stage2-rounds-container .round-list {
+            background-color: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .stage2-rounds-container .round-list-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stage2-rounds-container .round-list-item {
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .stage2-rounds-container .round-list-item:hover {
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .stage2-rounds-container .round-list-item.active {
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+            border-width: 3px;
+        }
+
+        .stage2-rounds-container .round-list-item-header {
+            font-weight: 700;
+            font-size: 16px;
+            color: #111827;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stage2-rounds-container .round-list-item.active .round-list-item-header {
+            color: #1e40af;
+        }
+
+        .stage2-rounds-container .round-list-item.active .round-list-item-header::before {
+            content: "▶";
+            color: #2563eb;
+            font-size: 12px;
+        }
+
+        .stage2-rounds-container .round-list-item-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 13px;
+            color: #6b7280;
+            padding-left: 20px;
+        }
+
+        .stage2-rounds-container .round-list-item.active .round-list-item-stats {
+            color: #1e40af;
+            font-weight: 500;
+        }
+
+        .scored-chunks-list {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .scored-chunks-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .scored-chunks-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .scored-chunks-legend {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .legend-color.top10 {
+            background-color: #10b981;
+        }
+
+        .legend-color.gt {
+            background-color: #f59e0b;
+        }
+
+        .legend-color.top50 {
+            background-color: #3b82f6;
+        }
+
+        .scored-chunks-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .scored-chunk-card {
+            background-color: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .scored-chunk-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .scored-chunk-card.top10 {
+            background-color: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .scored-chunk-card.selected {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+        }
+
+        .scored-chunk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .scored-chunk-id {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .scored-chunk-tags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .tag.top10-tag {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .tag.gt-tag {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .tag.qrel-tag {
+            background-color: #6b7280;
+            color: white;
+        }
+
+        .tag.top50-tag {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .scored-chunk-score {
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .stage2-chunk-detail-panel {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .stage2-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .stage2-detail-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .detail-close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .detail-close-btn:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .stage2-detail-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .detail-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        .detail-text {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #374151;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .stage2-summary-content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .stage2-summary-detail-panel {
+            background-color: white;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            height: fit-content;
+            max-height: calc(100vh - 300px);
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+
+        .stage2-summary-detail-panel.empty {
+            border-color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        .summary-stats-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-item {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .sampling-info {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .sampling-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .sampling-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .aggregated-rankings-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .aggregated-rankings-container {
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            gap: 24px;
+        }
+
+        .aggregated-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .summary-legend {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background-color: #f9fafb;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .aggregated-table {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .aggregated-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .aggregated-table thead {
+            background-color: #f9fafb;
+        }
+
+        .aggregated-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .aggregated-table td {
+            padding: 12px;
+            font-size: 14px;
+            color: #4b5563;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .aggregated-row {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .aggregated-row:hover {
+            background-color: #f9fafb;
+        }
+
+        .aggregated-row.top50 {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .aggregated-row.top50:hover {
+            background-color: #dbeafe;
+        }
+
+        @media (max-width: 1400px) {
+            .stage2-rounds-container {
+                grid-template-columns: 200px 1fr 350px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .stage2-rounds-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .round-list {
+                max-height: 300px;
+            }
+
+            .stage2-chunk-detail-panel {
+                max-height: 400px;
+            }
+
+            .aggregated-rankings-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stage2-summary-detail-panel {
+                position: static;
+                max-height: 400px;
+            }
+        }
+
+        /* Stage 3 Styles */
+        .stage3-overview {
+            padding: 24px 0;
+        }
+
+        .overview-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .candidate-list-section {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .candidate-list-header {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .candidate-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .candidate-table th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .candidate-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .candidate-row {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .candidate-row:hover {
+            background-color: #f9fafb;
+        }
+
+        .candidate-row.seed-row {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .candidate-row.qrel-2 {
+            border-left: 4px solid #10b981;
+        }
+
+        .candidate-row.qrel-1 {
+            border-left: 4px solid #3b82f6;
+        }
+
+        .candidate-row.qrel-0 {
+            border-left: 4px solid #9ca3af;
+        }
+
+        /* Replay Layout */
+        .stage3-replay {
+            padding: 24px 0;
+        }
+
+        .replay-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr 400px;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .event-timeline-column {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-header {
+            padding: 16px;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .replay-controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .event-list {
+            flex: 1;
+            overflow-y: auto;
+            max-height: calc(100vh - 300px);
+        }
+
+        .event-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .event-item:hover {
+            background-color: #f9fafb;
+        }
+
+        .event-item.active {
+            background-color: #dbeafe;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .event-item.swapped {
+            border-left: 3px solid #10b981;
+        }
+
+        .event-id {
+            font-weight: 600;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .event-info {
+            margin-top: 4px;
+            font-size: 13px;
+        }
+
+        .event-pair {
+            font-weight: 600;
+            margin: 4px 0;
+        }
+
+        .swap-indicator {
+            color: #10b981;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .ranking-lane-column {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ranking-lane-header {
+            padding: 16px;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .ranking-list {
+            flex: 1;
+            overflow-y: auto;
+            max-height: calc(100vh - 300px);
+        }
+
+        .rank-row {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.5s ease-in-out, background-color 0.3s;
+        }
+
+        .rank-row .rank-number {
+            min-width: 40px;
+        }
+
+        .rank-row .chunk-id {
+            min-width: 80px;
+            font-weight: 600;
+        }
+
+        .rank-row .gt-badge-container {
+            flex: 1;
+        }
+
+        .rank-row .stage2-score {
+            min-width: 120px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .rank-row.qrel-2 {
+            border-left: 4px solid #10b981;
+        }
+
+        .rank-row.qrel-1 {
+            border-left: 4px solid #3b82f6;
+        }
+
+        .rank-row.qrel-0 {
+            border-left: 4px solid #9ca3af;
+        }
+
+        .rank-row.top10-zone {
+            background-color: rgba(16, 185, 129, 0.05);
+            border: 2px solid #10b981;
+        }
+
+        .rank-row.comparison-chunk-a {
+            outline: 2px solid #f97316;
+            background-color: rgba(249, 115, 22, 0.1);
+        }
+
+        .rank-row.comparison-chunk-b {
+            outline: 2px solid #a855f7;
+            background-color: rgba(168, 85, 247, 0.1);
+        }
+
+        .rank-row.winner-chunk::after {
+            content: "👑";
+            margin-left: 8px;
+        }
+
+        .rank-number {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .top10-label {
+            font-size: 11px;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .comparison-result {
+            padding: 12px 16px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .swap-message {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .no-swap-message {
+            color: #666;
+        }
+
+        .decision-panel-column {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .decision-panel-header {
+            padding: 16px;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .decision-panel-content {
+            flex: 1;
+            overflow-y: auto;
+            max-height: calc(100vh - 300px);
+            padding: 16px;
+        }
+
+        .decision-panel-empty {
+            padding: 24px;
+            text-align: center;
+            color: #666;
+        }
+
+        .winner-section {
+            margin-bottom: 24px;
+        }
+
+        .winner-header h4 {
+            margin-bottom: 12px;
+        }
+
+        .confidence-bar {
+            margin-top: 8px;
+        }
+
+        .confidence-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .confidence-progress {
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+
+        .rationale-section, .why-not-section {
+            margin-top: 16px;
+        }
+
+        .rationale-section h5, .why-not-section h5 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .rationale-text, .why-not-text {
+            line-height: 1.6;
+            color: #374151;
+            margin-top: 8px;
+        }
+
+        .comparison-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .mini-card {
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            background: #f9fafb;
+        }
+
+        .mini-card.winner {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .mini-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .mini-card-score {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .mini-card-summary {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .pass-progress-section {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .pass-progress-section h3 {
+            margin-bottom: 16px;
+        }
+
+        .pass-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .pass-tab {
+            padding: 8px 16px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .pass-tab:hover {
+            background: #e5e7eb;
+        }
+
+        .pass-tab.active {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .convergence-message {
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            color: #065f46;
+            font-weight: 600;
+        }
+
+        /* Top-10 View */
+        .stage3-top10 {
+            padding: 24px 0;
+        }
+
+        .top10-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .top10-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 20px;
+        }
+
+        .top10-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .top10-card.qrel-2 {
+            border-left: 4px solid #10b981;
+        }
+
+        .top10-card.qrel-1 {
+            border-left: 4px solid #3b82f6;
+        }
+
+        .top10-card.qrel-0 {
+            border-left: 4px solid #9ca3af;
+        }
+
+        .top10-rank {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .top10-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .top10-stats {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .top10-summary {
+            line-height: 1.6;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+
+        .gt-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .gt-badge.gt-2 {
+            background: #10b981;
+            color: white;
+        }
+
+        .gt-badge.gt-1 {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .gt-badge.gt-0 {
+            background: #9ca3af;
+            color: white;
+        }
+
+        .legend-color.seed-top {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid #3b82f6;
+            border-radius: 2px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .legend-color.qrel-2 {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: #10b981;
+            border-radius: 2px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .legend-color.qrel-1 {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: #3b82f6;
+            border-radius: 2px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .legend-color.qrel-0 {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: #9ca3af;
+            border-radius: 2px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 1400px) {
+            .replay-layout {
+                grid-template-columns: 250px 1fr 350px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .replay-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-list, .ranking-list, .decision-panel-content {
+                max-height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -717,6 +2313,53 @@
             if (!text) return '';
             if (text.length <= maxLength) return text;
             return text.substring(0, maxLength) + '...';
+        }
+
+        // Load Stage 1 data
+        async function loadStage1Data() {
+            try {
+                const [stage1Response, chunkResponse, cardsResponse] = await Promise.all([
+                    fetch('data_overview/stage1_batches.json'),
+                    fetch('data_overview/chunk_special_transformed.json'),
+                    fetch('data_overview/cards.json')
+                ]);
+
+                if (!stage1Response.ok) {
+                    throw new Error(`Failed to load Stage 1 data: ${stage1Response.statusText}`);
+                }
+                if (!chunkResponse.ok) {
+                    throw new Error(`Failed to load chunk data: ${chunkResponse.statusText}`);
+                }
+                if (!cardsResponse.ok) {
+                    throw new Error(`Failed to load cards data: ${cardsResponse.statusText}`);
+                }
+
+                const stage1Data = await stage1Response.json();
+                const chunkData = await chunkResponse.json();
+                const cardsData = await cardsResponse.json();
+
+                // Extract qrel and chunk texts from first example
+                const example = chunkData[0];
+                const qrel = example.qrel || {};
+                const chunkTexts = example.messages['Text chunks'] || {};
+
+                // Create card map
+                const cardMap = new Map();
+                cardsData.forEach(card => {
+                    const chunkId = normalizeChunkId(card.chunk_id);
+                    cardMap.set(chunkId, card);
+                });
+
+                return {
+                    stage1Data,
+                    qrel,
+                    chunkTexts,
+                    cardMap
+                };
+            } catch (error) {
+                console.error('Error loading Stage 1 data:', error);
+                throw error;
+            }
         }
 
         // Data loading
@@ -781,11 +2424,64 @@
         let selectedChunk = null;
         let showComparison = false;
         let isSortedByRelevance = false;
+        let currentPage = 'home'; // 'home' or 'stage1' or 'stage2'
+        let stage1Data = null;
+        let activeBatchId = null;
+        let activeChunkId = null;
+        let qrelData = null; // Ground truth labels
+        let chunkTexts = null; // Original chunk texts
+        let chunkCards = null; // Card data with summaries
+        let savedScrollPositions = {
+            batchList: 0,
+            batchDetail: 0,
+            decisionDetail: 0,
+            stage2RoundList: 0,
+            stage2ScoredChunks: 0,
+            stage2ChunkDetail: 0
+        };
+        // Stage 2 state
+        let stage2Data = null;
+        let stage2Rounds = null;
+        let stage2Summary = null;
+        let stage2ViewMode = 'entry'; // 'entry', 'rounds', 'summary'
+        let stage2ActiveRoundId = null;
+        let stage2SelectedChunkId = null;
+        let stage1AcceptedPool = null; // Set of accepted chunk IDs from Stage 1
+        // Stage 3 state
+        let stage3Data = null;
+        let stage3Trace = null;
+        let stage3Top10 = null;
+        let stage3ViewMode = 'overview'; // 'overview', 'replay', 'top10'
+        let stage3ActiveEventId = null;
+        let stage3CurrentRanking = null; // Current ranking state based on events
+        let stage3ReplayMode = 'paused'; // 'playing', 'paused'
+        let stage3Top50 = null; // Top-50 from Stage 2
+        let chunkDataForStage1 = null; // For qrel and original text
+        let cardsDataForStage1 = null; // For summary
 
         // Render functions
         function renderApp() {
             const app = document.getElementById('app');
             
+            // Render Stage 3 page
+            if (currentPage === 'stage3') {
+                renderStage3Page();
+                return;
+            }
+            
+            // Render Stage 2 page
+            if (currentPage === 'stage2') {
+                renderStage2Page();
+                return;
+            }
+            
+            // Render Stage 1 page
+            if (currentPage === 'stage1') {
+                renderStage1Page();
+                return;
+            }
+            
+            // Render home page
             if (!appData) {
                 app.innerHTML = '<div class="app-loading">Loading data...</div>';
                 return;
@@ -825,6 +2521,9 @@
                 <main class="app-main">
                     <div class="container">
                         <div class="controls-bar">
+                            <button class="btn btn-primary" onclick="handleNavigateToStage1()">Stage 1</button>
+                            <button class="btn btn-primary" onclick="handleNavigateToStage2()">Stage 2</button>
+                            <button class="btn btn-primary" onclick="handleNavigateToStage3()">Stage 3</button>
                             ${!showQuestion ? `
                                 <button class="btn btn-primary" onclick="handleAskQuestion()">Ask the Question</button>
                             ` : ''}
@@ -1120,6 +2819,318 @@
             renderApp();
         }
 
+        function handleNavigateToStage1() {
+            currentPage = 'stage1';
+            if (!stage1Data) {
+                loadStage1Data()
+                    .then(data => {
+                        stage1Data = data.stage1Data;
+                        qrelData = data.qrel;
+                        chunkTexts = data.chunkTexts;
+                        chunkCards = data.cardMap;
+                        activeBatchId = data.stage1Data.batches && data.stage1Data.batches.length > 0 ? data.stage1Data.batches[0].batch_id : null;
+                        activeChunkId = null;
+                        renderApp();
+                    })
+                    .catch(error => {
+                        document.getElementById('app').innerHTML = `
+                            <div class="app-error">
+                                <p>Error loading Stage 1 data: ${error.message}</p>
+                                <button class="btn btn-primary" onclick="handleNavigateToHome()" style="margin-top: 20px;">Back to Home</button>
+                            </div>
+                        `;
+                    });
+            } else {
+                renderApp();
+            }
+        }
+
+        function handleNavigateToHome() {
+            currentPage = 'home';
+            activeBatchId = null;
+            activeChunkId = null;
+            renderApp();
+        }
+
+        function handleBatchClick(batchId) {
+            // Save scroll positions before re-rendering
+            const batchListEl = document.querySelector('.batch-list');
+            if (batchListEl) savedScrollPositions.batchList = batchListEl.scrollTop;
+            
+            // Reset batch detail scroll when switching batches (new content)
+            savedScrollPositions.batchDetail = 0;
+            savedScrollPositions.decisionDetail = 0;
+            
+            activeBatchId = batchId;
+            activeChunkId = null;
+            renderApp();
+        }
+
+        function handleStage1ChunkClick(chunkId, isSelected) {
+            // Save scroll positions before re-rendering
+            const batchListEl = document.querySelector('.batch-list');
+            const batchDetailEl = document.querySelector('.batch-detail');
+            const decisionDetailEl = document.querySelector('.decision-detail-panel');
+            if (batchListEl) savedScrollPositions.batchList = batchListEl.scrollTop;
+            if (batchDetailEl) savedScrollPositions.batchDetail = batchDetailEl.scrollTop;
+            if (decisionDetailEl) savedScrollPositions.decisionDetail = decisionDetailEl.scrollTop;
+            
+            activeChunkId = { id: chunkId, isSelected };
+            renderApp();
+        }
+
+        function handleCloseDecisionDetail() {
+            activeChunkId = null;
+            renderApp();
+        }
+
+        function renderStage1Page() {
+            const app = document.getElementById('app');
+            
+            if (!stage1Data) {
+                app.innerHTML = '<div class="app-loading">Loading Stage 1 data...</div>';
+                return;
+            }
+
+            const activeBatch = stage1Data.batches.find(b => b.batch_id === activeBatchId);
+            
+            // Get ground truth qrel data - use the loaded qrelData
+            const qrelDataToUse = qrelData || {};
+            
+            // Get selected/rejected chunk data
+            const selectedChunkData = activeBatch && activeChunkId && activeChunkId.isSelected
+                ? activeBatch.selected.find(s => normalizeChunkId(s.chunk_uid) === normalizeChunkId(activeChunkId.id))
+                : null;
+            const rejectedChunkData = activeBatch && activeChunkId && !activeChunkId.isSelected
+                ? activeBatch.rejected.find(r => normalizeChunkId(r.chunk_uid) === normalizeChunkId(activeChunkId.id))
+                : null;
+            
+            // Get chunk original text and summary
+            let chunkOriginalText = '';
+            let chunkSummary = '';
+            let chunkQrel = 0;
+            
+            if (activeChunkId) {
+                const chunkId = normalizeChunkId(activeChunkId.id);
+                chunkQrel = qrelDataToUse[chunkId] || 0;
+                
+                // Get original text from chunkTexts
+                if (chunkTexts && chunkTexts[chunkId]) {
+                    chunkOriginalText = chunkTexts[chunkId];
+                }
+                
+                // Get summary from chunkCards
+                if (chunkCards) {
+                    const card = chunkCards.get(chunkId);
+                    if (card && card.card && card.card.summary) {
+                        chunkSummary = card.card.summary;
+                    }
+                }
+            }
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Financial Filing Evidence Selection Demo</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">Stage:</span>
+                                <span class="info-value">Stage 1 - Batch Picker</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Question:</span>
+                                <span class="info-value">${stage1Data.question || 'N/A'}</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="handleNavigateToHome()" style="margin-left: auto;">Back to Home</button>
+                            <button class="btn btn-primary" onclick="handleNavigateToStage2()" style="margin-left: 8px;">Stage 2</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="stage1-container">
+                            <div class="batch-list">
+                                <div class="batch-list-title">Batches</div>
+                                ${stage1Data.batches.map(batch => {
+                                    const candidateCount = batch.candidate_chunk_uids ? batch.candidate_chunk_uids.length : 0;
+                                    const selectedCount = batch.selected ? batch.selected.length : 0;
+                                    const rejectedCount = batch.rejected ? batch.rejected.length : 0;
+                                    const isActive = batch.batch_id === activeBatchId;
+                                    
+                                    return `
+                                        <div class="batch-list-item ${isActive ? 'active' : ''}" onclick="handleBatchClick(${batch.batch_id})">
+                                            <div class="batch-list-item-header">Batch ${batch.batch_id}</div>
+                                            <div class="batch-list-item-stats">
+                                                <div>${candidateCount} candidates</div>
+                                                <div>${selectedCount} selected</div>
+                                                <div>${rejectedCount} rejected</div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+
+                            <div class="batch-detail">
+                                ${activeBatch ? `
+                                    <div class="batch-detail-header">
+                                        <div class="batch-detail-title">Batch ${activeBatch.batch_id}</div>
+                                        <div class="batch-detail-subtitle">
+                                            Range: ${activeBatch.range ? activeBatch.range[0] : 'N/A'} - ${activeBatch.range ? activeBatch.range[1] : 'N/A'} | 
+                                            ${activeBatch.candidate_chunk_uids ? activeBatch.candidate_chunk_uids.length : 0} candidates
+                                        </div>
+                                    </div>
+
+                                    <div class="stage-legend">
+                                        <div class="stage-legend-item">
+                                            <span class="stage-legend-color selected"></span>
+                                            <span>Selected</span>
+                                        </div>
+                                        <div class="stage-legend-item">
+                                            <span class="stage-legend-color rejected"></span>
+                                            <span>Rejected</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="chunk-section">
+                                        <div class="chunk-section-title selected">Selected (${activeBatch.selected ? activeBatch.selected.length : 0})</div>
+                                        ${activeBatch.selected && activeBatch.selected.length > 0 ? `
+                                            <div class="chunk-grid-stage1">
+                                                ${activeBatch.selected.map(item => {
+                                                    const chunkId = normalizeChunkId(item.chunk_uid);
+                                                    const qrel = qrelDataToUse[chunkId] || 0;
+                                                    const isGroundTruth = qrel === 1 || qrel === 2;
+                                                    return `
+                                                        <div class="chunk-chip selected ${isGroundTruth ? 'ground-truth' : ''}" onclick="handleStage1ChunkClick('${item.chunk_uid}', true)">
+                                                            <div class="chunk-chip-id">
+                                                                Chunk ${item.chunk_uid}
+                                                                ${isGroundTruth ? `<span class="ground-truth-badge">Ground Truth (qrel=${qrel})</span>` : ''}
+                                                            </div>
+                                                            <div class="chunk-chip-confidence">Confidence: ${item.confidence ? item.confidence.toFixed(2) : 'N/A'}</div>
+                                                        </div>
+                                                    `;
+                                                }).join('')}
+                                            </div>
+                                        ` : `
+                                            <div class="empty-state">No chunks selected in this batch.</div>
+                                        `}
+                                    </div>
+
+                                    <div class="chunk-section">
+                                        <div class="chunk-section-title rejected">Rejected (${activeBatch.rejected ? activeBatch.rejected.length : 0})</div>
+                                        ${activeBatch.rejected && activeBatch.rejected.length > 0 ? `
+                                            <div class="chunk-grid-stage1">
+                                                ${activeBatch.rejected.map(item => `
+                                                    <div class="chunk-chip rejected" onclick="handleStage1ChunkClick('${item.chunk_uid}', false)">
+                                                        <div class="chunk-chip-id">Chunk ${item.chunk_uid}</div>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        ` : `
+                                            <div class="empty-state">No chunks rejected in this batch.</div>
+                                        `}
+                                    </div>
+
+                            </div>
+
+                            <div class="decision-detail-panel ${(selectedChunkData || rejectedChunkData) ? (selectedChunkData ? 'selected' : 'rejected') : 'empty'}">
+                                ${(selectedChunkData || rejectedChunkData) ? `
+                                    <div class="decision-detail-header">
+                                        <div class="decision-detail-title ${selectedChunkData ? 'selected' : 'rejected'}">
+                                            ${selectedChunkData ? 'Selected' : 'Rejected'} - Chunk ${selectedChunkData ? selectedChunkData.chunk_uid : rejectedChunkData.chunk_uid}
+                                            ${selectedChunkData && chunkQrel > 0 ? `<span class="ground-truth-badge">Ground Truth (qrel=${chunkQrel})</span>` : ''}
+                                        </div>
+                                        <button class="decision-detail-close" onclick="handleCloseDecisionDetail()" aria-label="Close">×</button>
+                                    </div>
+                                    <div class="decision-detail-content">
+                                        ${selectedChunkData ? `
+                                            <div class="decision-detail-item">
+                                                <div class="decision-detail-label">Decision Status:</div>
+                                                <div class="decision-detail-value">Selected</div>
+                                            </div>
+                                            <div class="decision-detail-item">
+                                                <div class="decision-detail-label">Confidence:</div>
+                                                <div class="decision-detail-value">${selectedChunkData.confidence ? selectedChunkData.confidence.toFixed(2) : 'N/A'}</div>
+                                            </div>
+                                            <div class="decision-detail-item">
+                                                <div class="decision-detail-label">Reasons:</div>
+                                                <ul class="decision-reasons">
+                                                    ${selectedChunkData.reasons && selectedChunkData.reasons.length > 0 ? 
+                                                        selectedChunkData.reasons.map(reason => `<li>${escapeHtml(reason)}</li>`).join('') 
+                                                        : '<li>No reasons provided.</li>'
+                                                    }
+                                                </ul>
+                                            </div>
+                                            ${chunkSummary ? `
+                                                <div class="decision-detail-item">
+                                                    <div class="decision-detail-label">Summary:</div>
+                                                    <div class="chunk-summary-text">${escapeHtml(chunkSummary)}</div>
+                                                </div>
+                                            ` : ''}
+                                            ${chunkOriginalText ? `
+                                                <div class="decision-detail-item">
+                                                    <div class="decision-detail-label">Original Text:</div>
+                                                    <div class="chunk-original-text">${escapeHtml(chunkOriginalText)}</div>
+                                                </div>
+                                            ` : ''}
+                                        ` : `
+                                            <div class="decision-detail-item">
+                                                <div class="decision-detail-label">Decision Status:</div>
+                                                <div class="decision-detail-value">Rejected</div>
+                                            </div>
+                                            <div class="decision-detail-item">
+                                                <div class="decision-detail-label">Reject Reason:</div>
+                                                <div class="decision-detail-value">${rejectedChunkData.reject_reason ? escapeHtml(rejectedChunkData.reject_reason) : 'No reason provided.'}</div>
+                                            </div>
+                                            ${chunkSummary ? `
+                                                <div class="decision-detail-item">
+                                                    <div class="decision-detail-label">Summary:</div>
+                                                    <div class="chunk-summary-text">${escapeHtml(chunkSummary)}</div>
+                                                </div>
+                                            ` : ''}
+                                            ${chunkOriginalText ? `
+                                                <div class="decision-detail-item">
+                                                    <div class="decision-detail-label">Original Text:</div>
+                                                    <div class="chunk-original-text">${escapeHtml(chunkOriginalText)}</div>
+                                                </div>
+                                            ` : ''}
+                                        `}
+                                    </div>
+                                ` : `
+                                    <div class="empty-state">
+                                        <p>Click a chunk to view details</p>
+                                    </div>
+                                `}
+                            </div>
+                                ` : `
+                                    <div class="empty-state">
+                                        <p>Select a batch from the left to view details.</p>
+                                    </div>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+            
+            // Restore scroll positions after rendering
+            setTimeout(() => {
+                const batchListEl = document.querySelector('.batch-list');
+                const batchDetailEl = document.querySelector('.batch-detail');
+                const decisionDetailEl = document.querySelector('.decision-detail-panel');
+                
+                if (batchListEl && savedScrollPositions.batchList !== undefined) {
+                    batchListEl.scrollTop = savedScrollPositions.batchList;
+                }
+                if (batchDetailEl && savedScrollPositions.batchDetail !== undefined && savedScrollPositions.batchDetail > 0) {
+                    batchDetailEl.scrollTop = savedScrollPositions.batchDetail;
+                }
+                if (decisionDetailEl && savedScrollPositions.decisionDetail !== undefined && savedScrollPositions.decisionDetail > 0) {
+                    decisionDetailEl.scrollTop = savedScrollPositions.decisionDetail;
+                }
+            }, 10);
+        }
+
         // Initialize app
         loadChunkData()
             .then(data => {
@@ -1136,6 +3147,1342 @@
                     </div>
                 `;
             });
+
+        // Stage 2 functions
+        async function loadStage2Data() {
+            try {
+                const [roundsResponse, summaryResponse, stage1Response, chunkResponse, cardsResponse] = await Promise.all([
+                    fetch('data_overview/stage2_rounds.json'),
+                    fetch('data_overview/stage2_summary.json'),
+                    fetch('data_overview/stage1_batches.json'),
+                    fetch('data_overview/chunk_special_transformed.json'),
+                    fetch('data_overview/cards.json')
+                ]);
+
+                if (!roundsResponse.ok) throw new Error(`Failed to load Stage 2 rounds: ${roundsResponse.statusText}`);
+                if (!summaryResponse.ok) throw new Error(`Failed to load Stage 2 summary: ${summaryResponse.statusText}`);
+                if (!stage1Response.ok) throw new Error(`Failed to load Stage 1 data: ${stage1Response.statusText}`);
+                if (!chunkResponse.ok) throw new Error(`Failed to load chunk data: ${chunkResponse.statusText}`);
+                if (!cardsResponse.ok) throw new Error(`Failed to load cards data: ${cardsResponse.statusText}`);
+
+                const roundsData = await roundsResponse.json();
+                const summaryData = await summaryResponse.json();
+                const stage1Data = await stage1Response.json();
+                const chunkData = await chunkResponse.json();
+                const cardsData = await cardsResponse.json();
+
+                // Extract Stage 1 accepted pool
+                const acceptedPool = new Set();
+                if (stage1Data.batches) {
+                    stage1Data.batches.forEach(batch => {
+                        if (batch.selected) {
+                            batch.selected.forEach(item => {
+                                acceptedPool.add(normalizeChunkId(item.chunk_uid));
+                            });
+                        }
+                    });
+                }
+
+                // Extract qrel and chunk texts
+                const example = chunkData[0];
+                const qrel = example.qrel || {};
+                const chunkTexts = example.messages['Text chunks'] || {};
+
+                // Create card map
+                const cardMap = new Map();
+                cardsData.forEach(card => {
+                    const chunkId = normalizeChunkId(card.chunk_id);
+                    cardMap.set(chunkId, card);
+                });
+
+                return {
+                    rounds: roundsData,
+                    summary: summaryData,
+                    stage1Data: stage1Data,
+                    acceptedPool: Array.from(acceptedPool).sort((a, b) => parseInt(a) - parseInt(b)),
+                    qrel,
+                    chunkTexts,
+                    cardMap
+                };
+            } catch (error) {
+                console.error('Error loading Stage 2 data:', error);
+                throw error;
+            }
+        }
+
+        async function loadStage3Data() {
+            try {
+                const [traceResponse, top10Response, stage2SummaryResponse, chunkResponse, cardsResponse] = await Promise.all([
+                    fetch('data_overview/stage3_trace.json'),
+                    fetch('data_overview/stage3_top10.json'),
+                    fetch('data_overview/stage2_summary.json'),
+                    fetch('data_overview/chunk_special_transformed.json'),
+                    fetch('data_overview/cards.json')
+                ]);
+
+                if (!traceResponse.ok) throw new Error(`Failed to load Stage 3 trace: ${traceResponse.statusText}`);
+                if (!top10Response.ok) throw new Error(`Failed to load Stage 3 top10: ${top10Response.statusText}`);
+                if (!stage2SummaryResponse.ok) throw new Error(`Failed to load Stage 2 summary: ${stage2SummaryResponse.statusText}`);
+                if (!chunkResponse.ok) throw new Error(`Failed to load chunk data: ${chunkResponse.statusText}`);
+                if (!cardsResponse.ok) throw new Error(`Failed to load cards data: ${cardsResponse.statusText}`);
+
+                const traceData = await traceResponse.json();
+                const top10Data = await top10Response.json();
+                const stage2Summary = await stage2SummaryResponse.json();
+                const chunkData = await chunkResponse.json();
+                const cardsData = await cardsResponse.json();
+
+                // Extract metadata
+                const example = chunkData[0];
+                const qrel = example.qrel || {};
+                const chunkTexts = example.messages['Text chunks'] || {};
+
+                // Create card map
+                const cardMap = new Map();
+                cardsData.forEach(card => {
+                    const chunkId = normalizeChunkId(card.chunk_id);
+                    cardMap.set(chunkId, card);
+                });
+
+                // Build initial ranking from top50
+                const top50 = stage2Summary.top50_for_stage3 || [];
+                const initialRanking = top50.map((item, idx) => ({
+                    chunkId: normalizeChunkId(item.chunk_uid),
+                    rank: idx + 1,
+                    stage2Score: item.final_score,
+                    appearances: item.appearances,
+                    meanScore: item.mean_score,
+                    maxScore: item.max_score
+                }));
+
+                return {
+                    traceData,
+                    top10Data,
+                    stage2Summary,
+                    qrel,
+                    chunkTexts,
+                    cardMap,
+                    initialRanking,
+                    question: example.messages.question
+                };
+            } catch (error) {
+                console.error('Error loading Stage 3 data:', error);
+                throw error;
+            }
+        }
+
+        function handleNavigateToStage2() {
+            currentPage = 'stage2';
+            stage2ViewMode = 'entry';
+            stage2ActiveRoundId = null;
+            stage2SelectedChunkId = null;
+            
+            if (!stage2Data) {
+                loadStage2Data()
+                    .then(data => {
+                        stage2Data = data;
+                        stage2Rounds = data.rounds;
+                        stage2Summary = data.summary;
+                        stage1Data = data.stage1Data; // Save Stage 1 data for Summary view
+                        stage1AcceptedPool = data.acceptedPool;
+                        qrelData = data.qrel;
+                        chunkTexts = data.chunkTexts;
+                        chunkCards = data.cardMap;
+                        renderApp();
+                    })
+                    .catch(error => {
+                        document.getElementById('app').innerHTML = `
+                            <div class="app-error">
+                                <p>Error loading Stage 2 data: ${error.message}</p>
+                                <button class="btn btn-primary" onclick="handleNavigateToHome()" style="margin-top: 20px;">Back to Home</button>
+                            </div>
+                        `;
+                    });
+            } else {
+                renderApp();
+            }
+        }
+
+        function handleNavigateToStage3() {
+            currentPage = 'stage3';
+            if (!stage3Trace) {
+                loadStage3Data()
+                    .then(data => {
+                        stage3Trace = data.traceData;
+                        stage3Top10 = data.top10Data;
+                        stage3Top50 = data.initialRanking;
+                        stage3Data = data;
+                        qrelData = data.qrel;
+                        chunkTexts = data.chunkTexts;
+                        chunkCards = data.cardMap;
+                        stage3ViewMode = 'overview';
+                        stage3ActiveEventId = null;
+                        stage3CurrentRanking = null;
+                        stage3ReplayMode = 'paused';
+                        renderApp();
+                    })
+                    .catch(error => {
+                        document.getElementById('app').innerHTML = `
+                            <div class="app-error">
+                                <p>Error loading Stage 3 data: ${error.message}</p>
+                                <button class="btn btn-primary" onclick="handleNavigateToHome()" style="margin-top: 20px;">Back to Home</button>
+                            </div>
+                        `;
+                    });
+            } else {
+                renderApp();
+            }
+        }
+
+        function handleStage2ViewMode(mode) {
+            stage2ViewMode = mode;
+            if (mode === 'rounds' && stage2Rounds && stage2Rounds.rounds && stage2Rounds.rounds.length > 0) {
+                stage2ActiveRoundId = stage2Rounds.rounds[0].round_id;
+            }
+            stage2SelectedChunkId = null;
+            renderApp();
+        }
+
+        function handleStage2RoundClick(roundId) {
+            // Save scroll positions before re-rendering
+            const roundListEl = document.querySelector('.stage2-rounds-container .round-list');
+            if (roundListEl) savedScrollPositions.stage2RoundList = roundListEl.scrollTop;
+            
+            // Reset scored chunks and detail scroll when switching rounds (new content)
+            savedScrollPositions.stage2ScoredChunks = 0;
+            savedScrollPositions.stage2ChunkDetail = 0;
+            
+            stage2ActiveRoundId = roundId;
+            stage2SelectedChunkId = null;
+            renderApp();
+        }
+
+        function handleStage2ChunkClick(chunkId) {
+            // Save scroll positions before re-rendering
+            const roundListEl = document.querySelector('.stage2-rounds-container .round-list');
+            const scoredChunksEl = document.querySelector('.scored-chunks-list');
+            const chunkDetailEl = document.querySelector('.stage2-chunk-detail-panel');
+            if (roundListEl) savedScrollPositions.stage2RoundList = roundListEl.scrollTop;
+            if (scoredChunksEl) savedScrollPositions.stage2ScoredChunks = scoredChunksEl.scrollTop;
+            if (chunkDetailEl) savedScrollPositions.stage2ChunkDetail = chunkDetailEl.scrollTop;
+            
+            stage2SelectedChunkId = chunkId;
+            renderApp();
+        }
+
+        function renderStage2Page() {
+            const app = document.getElementById('app');
+            
+            if (!stage2Data) {
+                app.innerHTML = '<div class="app-loading">Loading Stage 2 data...</div>';
+                return;
+            }
+
+            if (stage2ViewMode === 'summary') {
+                renderStage2SummaryView();
+                return;
+            }
+
+            if (stage2ViewMode === 'rounds') {
+                renderStage2RoundsView();
+                return;
+            }
+
+            // Entry view
+            renderStage2EntryView();
+        }
+
+        function renderStage2EntryView() {
+            const app = document.getElementById('app');
+            const sampling = stage2Summary.sampling || {};
+            const qrelDataToUse = qrelData || {};
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Financial Filing Evidence Selection Demo</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">Stage:</span>
+                                <span class="info-value">Stage 2 - K-Fold Sampling</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Question:</span>
+                                <span class="info-value">${stage2Summary.question || 'N/A'}</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="handleNavigateToHome()" style="margin-left: auto;">Back to Home</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="sampling-overview-bar">
+                            <div class="sampling-metric">
+                                <span class="metric-label">Rounds:</span>
+                                <span class="metric-value">${sampling.rounds || 'N/A'}</span>
+                            </div>
+                            <div class="sampling-metric">
+                                <span class="metric-label">Sample Size per Round:</span>
+                                <span class="metric-value">${sampling.sample_size || 'N/A'}</span>
+                            </div>
+                            <div class="sampling-metric">
+                                <span class="metric-label">Top-10 per Round:</span>
+                                <span class="metric-value">${sampling.top10_per_round || 'N/A'}</span>
+                            </div>
+                            <div class="sampling-metric">
+                                <span class="metric-label">Random Seed:</span>
+                                <span class="metric-value">${sampling.random_seed || 'N/A'}</span>
+                            </div>
+                        </div>
+
+                        <div class="stage2-entry-content">
+                            <div class="accepted-pool-section">
+                                <h2>Stage 1 Accepted Pool</h2>
+                                <p class="section-subtitle">${stage1AcceptedPool.length} chunks accepted from Stage 1</p>
+                                <div class="chunk-pool-grid">
+                                    ${stage1AcceptedPool.map(chunkId => {
+                                        const qrel = qrelDataToUse[chunkId] || 0;
+                                        const isGT = qrel === 1 || qrel === 2;
+                                        return `
+                                            <div class="chunk-pool-chip ${isGT ? 'ground-truth' : ''}">
+                                                Chunk ${chunkId}
+                                                ${isGT ? '<span class="gt-badge">GT</span>' : ''}
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+
+                            <div class="kfold-section">
+                                <button class="btn btn-primary btn-large" onclick="handleStage2ViewMode('rounds')">
+                                    Run K-Fold Sampling
+                                </button>
+                                
+                                ${stage2Rounds && stage2Rounds.rounds ? `
+                                    <div class="rounds-preview-grid">
+                                        ${stage2Rounds.rounds.map(round => `
+                                            <div class="round-preview-card">
+                                                <div class="round-preview-header">Round ${round.round_id}</div>
+                                                <div class="round-preview-stats">
+                                                    <div>${round.sampled_chunk_uids ? round.sampled_chunk_uids.length : 0} sampled</div>
+                                                    <div>${round.top10 ? round.top10.length : 0} top-10</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+
+                            <div class="stage2-nav-buttons">
+                                <button class="btn btn-primary" onclick="handleStage2ViewMode('rounds')">Next: Round Operation View</button>
+                                <button class="btn btn-secondary" onclick="handleStage2ViewMode('summary')">Stage 2 Summary</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function renderStage2RoundsView() {
+            const app = document.getElementById('app');
+            if (!stage2Rounds || !stage2Rounds.rounds) {
+                app.innerHTML = '<div class="app-error">No rounds data available.</div>';
+                return;
+            }
+
+            const activeRound = stage2Rounds.rounds.find(r => r.round_id === stage2ActiveRoundId);
+            const qrelDataToUse = qrelData || {};
+            
+            // Sort scored chunks by score descending
+            const sortedScored = activeRound && activeRound.scored 
+                ? [...activeRound.scored].sort((a, b) => (b.score || 0) - (a.score || 0))
+                : [];
+            
+            const top10Set = activeRound && activeRound.top10 
+                ? new Set(activeRound.top10.map(id => normalizeChunkId(id)))
+                : new Set();
+
+            const selectedChunk = sortedScored.find(c => normalizeChunkId(c.chunk_uid) === normalizeChunkId(stage2SelectedChunkId));
+            const chunkId = selectedChunk ? normalizeChunkId(selectedChunk.chunk_uid) : null;
+            const chunkQrel = chunkId ? (qrelDataToUse[chunkId] || 0) : 0;
+            const chunkText = chunkId && chunkTexts ? (chunkTexts[chunkId] || '') : '';
+            const chunkCard = chunkId && chunkCards ? chunkCards.get(chunkId) : null;
+            const chunkSummary = chunkCard && chunkCard.card ? (chunkCard.card.summary || '') : '';
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Financial Filing Evidence Selection Demo</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">Stage:</span>
+                                <span class="info-value">Stage 2 - Round Operation View</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="handleStage2ViewMode('entry')" style="margin-left: auto;">Back to Entry</button>
+                            <button class="btn btn-primary" onclick="handleStage2ViewMode('summary')" style="margin-left: 8px;">Stage 2 Summary</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="stage2-rounds-container">
+                            <div class="round-list">
+                                <div class="round-list-title">Rounds</div>
+                                ${stage2Rounds.rounds.map(round => {
+                                    const isActive = round.round_id === stage2ActiveRoundId;
+                                    const sampledCount = round.sampled_chunk_uids ? round.sampled_chunk_uids.length : 0;
+                                    const top10Count = round.top10 ? round.top10.length : 0;
+                                    return `
+                                        <div class="round-list-item ${isActive ? 'active' : ''}" onclick="handleStage2RoundClick(${round.round_id})">
+                                            <div class="round-list-item-header">Round ${round.round_id}</div>
+                                            <div class="round-list-item-stats">
+                                                <div>${sampledCount} candidates</div>
+                                                <div>${top10Count} top-10 selected</div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+
+                            <div class="scored-chunks-list">
+                                ${activeRound ? `
+                                    <div class="scored-chunks-header">
+                                        <h3>Scored Chunks (Round ${activeRound.round_id})</h3>
+                                        <div class="scored-chunks-legend">
+                                            <span class="legend-item"><span class="legend-color top10"></span> Top-10</span>
+                                            <span class="legend-item"><span class="legend-color gt"></span> Ground Truth</span>
+                                        </div>
+                                    </div>
+                                    <div class="scored-chunks-grid">
+                                        ${sortedScored.map(item => {
+                                            const chunkId = normalizeChunkId(item.chunk_uid);
+                                            const isTop10 = top10Set.has(chunkId);
+                                            const qrel = qrelDataToUse[chunkId] || 0;
+                                            const isGT = qrel === 1 || qrel === 2;
+                                            const isSelected = normalizeChunkId(stage2SelectedChunkId) === chunkId;
+                                            return `
+                                                <div class="scored-chunk-card ${isTop10 ? 'top10' : ''} ${isSelected ? 'selected' : ''}" onclick="handleStage2ChunkClick('${item.chunk_uid}')">
+                                                    <div class="scored-chunk-header">
+                                                        <span class="scored-chunk-id">Chunk ${item.chunk_uid}</span>
+                                                        <div class="scored-chunk-tags">
+                                                            ${isTop10 ? '<span class="tag top10-tag">Top-10</span>' : ''}
+                                                            ${isGT ? '<span class="tag gt-tag">GT</span>' : ''}
+                                                            ${qrel > 0 ? `<span class="tag qrel-tag">${qrel === 2 ? 'Highly Relevant' : 'Relevant'}</span>` : ''}
+                                                        </div>
+                                                    </div>
+                                                    <div class="scored-chunk-score">Score: ${item.score || 0}</div>
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                ` : '<div class="empty-state">Select a round to view scored chunks.</div>'}
+                            </div>
+
+                            <div class="stage2-chunk-detail-panel">
+                                ${selectedChunk ? `
+                                    <div class="stage2-detail-header">
+                                        <h3>Chunk ${selectedChunk.chunk_uid} Details</h3>
+                                        <button class="detail-close-btn" onclick="handleStage2ChunkClick(null)">×</button>
+                                    </div>
+                                    <div class="stage2-detail-content">
+                                        <div class="detail-section">
+                                            <div class="detail-label">Score:</div>
+                                            <div class="detail-value">${selectedChunk.score || 0}</div>
+                                        </div>
+                                        ${chunkQrel > 0 ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Ground Truth:</div>
+                                                <div class="detail-value">
+                                                    <span class="gt-badge">${chunkQrel === 2 ? 'Highly Relevant (qrel=2)' : 'Relevant (qrel=1)'}</span>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        <div class="detail-section">
+                                            <div class="detail-label">Justification:</div>
+                                            <div class="detail-text">${escapeHtml(selectedChunk.justification || 'No justification provided.')}</div>
+                                        </div>
+                                        ${chunkSummary ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Summary:</div>
+                                                <div class="chunk-summary-text">${escapeHtml(chunkSummary)}</div>
+                                            </div>
+                                        ` : ''}
+                                        ${chunkText ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Original Text:</div>
+                                                <div class="chunk-original-text">${escapeHtml(chunkText)}</div>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                ` : '<div class="empty-state">Select a chunk to see details.</div>'}
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+            
+            // Restore scroll positions after rendering
+            setTimeout(() => {
+                const roundListEl = document.querySelector('.stage2-rounds-container .round-list');
+                const scoredChunksEl = document.querySelector('.scored-chunks-list');
+                const chunkDetailEl = document.querySelector('.stage2-chunk-detail-panel');
+                
+                if (roundListEl && savedScrollPositions.stage2RoundList !== undefined) {
+                    roundListEl.scrollTop = savedScrollPositions.stage2RoundList;
+                }
+                if (scoredChunksEl && savedScrollPositions.stage2ScoredChunks !== undefined && savedScrollPositions.stage2ScoredChunks > 0) {
+                    scoredChunksEl.scrollTop = savedScrollPositions.stage2ScoredChunks;
+                }
+                if (chunkDetailEl && savedScrollPositions.stage2ChunkDetail !== undefined && savedScrollPositions.stage2ChunkDetail > 0) {
+                    chunkDetailEl.scrollTop = savedScrollPositions.stage2ChunkDetail;
+                }
+            }, 10);
+        }
+
+        function renderStage2SummaryView() {
+            const app = document.getElementById('app');
+            if (!stage2Summary) {
+                app.innerHTML = '<div class="app-error">No summary data available.</div>';
+                return;
+            }
+
+            const stats = stage2Summary.stats || {};
+            const sampling = stage2Summary.sampling || {};
+            const aggregated = stage2Summary.aggregated || [];
+            const top50Set = new Set((stage2Summary.top50_for_stage3 || []).map(id => normalizeChunkId(id)));
+            const qrelDataToUse = qrelData || {};
+            
+            // Build set of chunks that appeared in round top-10
+            const roundTop10Set = new Set();
+            if (stage2Rounds && stage2Rounds.rounds) {
+                stage2Rounds.rounds.forEach(round => {
+                    if (round.top10) {
+                        round.top10.forEach(chunkId => {
+                            roundTop10Set.add(normalizeChunkId(chunkId));
+                        });
+                    }
+                });
+            }
+            
+            // Get selected chunk data
+            const selectedChunkData = stage2SelectedChunkId 
+                ? aggregated.find(item => normalizeChunkId(item.chunk_uid) === normalizeChunkId(stage2SelectedChunkId))
+                : null;
+            
+            // Get chunk details
+            let chunkSummary = '';
+            let chunkText = '';
+            let chunkQrel = 0;
+            let stage1Reasons = [];
+            
+            if (selectedChunkData) {
+                const chunkId = normalizeChunkId(selectedChunkData.chunk_uid);
+                chunkQrel = qrelDataToUse[chunkId] || 0;
+                
+                // Get summary from cards
+                if (chunkCards) {
+                    const card = chunkCards.get(chunkId);
+                    if (card && card.card && card.card.summary) {
+                        chunkSummary = card.card.summary;
+                    }
+                }
+                
+                // Get original text
+                if (chunkTexts && chunkTexts[chunkId]) {
+                    chunkText = chunkTexts[chunkId];
+                }
+                
+                // Get Stage 1 reasons from stage1Data
+                if (stage1Data && stage1Data.batches) {
+                    stage1Data.batches.forEach(batch => {
+                        if (batch.selected) {
+                            const selectedItem = batch.selected.find(item => 
+                                normalizeChunkId(item.chunk_uid) === chunkId
+                            );
+                            if (selectedItem && selectedItem.reasons) {
+                                stage1Reasons = selectedItem.reasons;
+                            }
+                        }
+                    });
+                }
+            }
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Financial Filing Evidence Selection Demo</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">Stage:</span>
+                                <span class="info-value">Stage 2 - Summary</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="handleStage2ViewMode('entry')" style="margin-left: auto;">Back to Entry</button>
+                            <button class="btn btn-primary" onclick="handleStage2ViewMode('rounds')" style="margin-left: 8px;">Round View</button>
+                            <button class="btn btn-primary" onclick="handleNavigateToStage3()" style="margin-left: 8px;">Stage 3</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="stage2-summary-content">
+                            <div class="summary-stats-section">
+                                <h2>Statistics</h2>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-label">Accepted Pool Size</div>
+                                        <div class="stat-value">${stats.accepted_pool_size || 'N/A'}</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Total Rounds Completed</div>
+                                        <div class="stat-value">${stats.total_rounds_completed || 'N/A'}</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Total Top Records</div>
+                                        <div class="stat-value">${stats.total_top_records || 'N/A'}</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-label">Unique in Top Records</div>
+                                        <div class="stat-value">${stats.unique_in_top_records || 'N/A'}</div>
+                                    </div>
+                                </div>
+                                <div class="sampling-info">
+                                    <h3>Sampling Configuration</h3>
+                                    <div class="sampling-details">
+                                        <div>Rounds: ${sampling.rounds || 'N/A'}</div>
+                                        <div>Sample Size: ${sampling.sample_size || 'N/A'}</div>
+                                        <div>Top-10 per Round: ${sampling.top10_per_round || 'N/A'}</div>
+                                        <div>Random Seed: ${sampling.random_seed || 'N/A'}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="aggregated-rankings-section">
+                                <h2>Aggregated Rankings</h2>
+                                <div class="summary-legend">
+                                    <span class="legend-item"><span class="legend-color top10"></span> Round Top-10</span>
+                                    <span class="legend-item"><span class="legend-color top50"></span> Top-50 for Stage 3</span>
+                                    <span class="legend-item"><span class="legend-color gt"></span> Ground Truth</span>
+                                </div>
+                                <div class="aggregated-rankings-container">
+                                    <div class="aggregated-table-wrapper">
+                                        <div class="aggregated-table">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Rank</th>
+                                                        <th>Chunk ID</th>
+                                                        <th>Appearances</th>
+                                                        <th>Mean Score</th>
+                                                        <th>Max Score</th>
+                                                        <th>Final Score</th>
+                                                        <th>Markers</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    ${aggregated.map((item, index) => {
+                                                        const chunkId = normalizeChunkId(item.chunk_uid);
+                                                        const isTop50 = top50Set.has(chunkId);
+                                                        const isRoundTop10 = roundTop10Set.has(chunkId);
+                                                        const qrel = qrelDataToUse[chunkId] || 0;
+                                                        const isGT = qrel === 1 || qrel === 2;
+                                                        return `
+                                                            <tr class="aggregated-row ${isTop50 ? 'top50' : ''}" onclick="handleStage2ChunkClick('${item.chunk_uid}')">
+                                                                <td>${index + 1}</td>
+                                                                <td>${item.chunk_uid}</td>
+                                                                <td>${item.appearances || 0}</td>
+                                                                <td>${item.mean_score ? item.mean_score.toFixed(2) : 'N/A'}</td>
+                                                                <td>${item.max_score || 'N/A'}</td>
+                                                                <td>${item.final_score ? item.final_score.toFixed(2) : 'N/A'}</td>
+                                                                <td>
+                                                                    ${isRoundTop10 ? '<span class="tag top10-tag">Round Top-10</span>' : ''}
+                                                                    ${isTop50 ? '<span class="tag top50-tag">Top-50</span>' : ''}
+                                                                    ${isGT ? '<span class="tag gt-tag">GT</span>' : ''}
+                                                                </td>
+                                                            </tr>
+                                                        `;
+                                                    }).join('')}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    ${selectedChunkData ? `
+                                        <div class="stage2-summary-detail-panel">
+                                    <div class="stage2-detail-header">
+                                        <h3>Chunk ${selectedChunkData.chunk_uid} Details</h3>
+                                        <button class="detail-close-btn" onclick="handleStage2ChunkClick(null)">×</button>
+                                    </div>
+                                    <div class="stage2-detail-content">
+                                        <div class="detail-section">
+                                            <div class="detail-label">Rank:</div>
+                                            <div class="detail-value">${aggregated.findIndex(item => normalizeChunkId(item.chunk_uid) === normalizeChunkId(selectedChunkData.chunk_uid)) + 1}</div>
+                                        </div>
+                                        <div class="detail-section">
+                                            <div class="detail-label">Appearances:</div>
+                                            <div class="detail-value">${selectedChunkData.appearances || 0}</div>
+                                        </div>
+                                        <div class="detail-section">
+                                            <div class="detail-label">Mean Score:</div>
+                                            <div class="detail-value">${selectedChunkData.mean_score ? selectedChunkData.mean_score.toFixed(2) : 'N/A'}</div>
+                                        </div>
+                                        <div class="detail-section">
+                                            <div class="detail-label">Max Score:</div>
+                                            <div class="detail-value">${selectedChunkData.max_score || 'N/A'}</div>
+                                        </div>
+                                        <div class="detail-section">
+                                            <div class="detail-label">Final Score:</div>
+                                            <div class="detail-value">${selectedChunkData.final_score ? selectedChunkData.final_score.toFixed(2) : 'N/A'}</div>
+                                        </div>
+                                        ${chunkQrel > 0 ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Ground Truth:</div>
+                                                <div class="detail-value">
+                                                    <span class="gt-badge">${chunkQrel === 2 ? 'Highly Relevant (qrel=2)' : 'Relevant (qrel=1)'}</span>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${top50Set.has(normalizeChunkId(selectedChunkData.chunk_uid)) ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Stage 3 Status:</div>
+                                                <div class="detail-value">
+                                                    <span class="tag top50-tag">Top-50 for Stage 3</span>
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${chunkSummary ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Summary:</div>
+                                                <div class="chunk-summary-text">${escapeHtml(chunkSummary)}</div>
+                                            </div>
+                                        ` : ''}
+                                        ${stage1Reasons.length > 0 ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Stage 1 Selected Reasons:</div>
+                                                <ul class="decision-reasons">
+                                                    ${stage1Reasons.map(reason => `<li>${escapeHtml(reason)}</li>`).join('')}
+                                                </ul>
+                                            </div>
+                                        ` : ''}
+                                        ${selectedChunkData.sample_justifications && selectedChunkData.sample_justifications.length > 0 ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Stage 2 Justifications:</div>
+                                                <ul class="decision-reasons">
+                                                    ${selectedChunkData.sample_justifications.map(justification => `<li>${escapeHtml(justification)}</li>`).join('')}
+                                                </ul>
+                                            </div>
+                                        ` : ''}
+                                        ${chunkText ? `
+                                            <div class="detail-section">
+                                                <div class="detail-label">Original Text:</div>
+                                                <div class="chunk-original-text">${escapeHtml(chunkText)}</div>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                                    ` : `
+                                        <div class="stage2-summary-detail-panel empty">
+                                            <div class="empty-state">
+                                                <p>Click a row to view chunk details</p>
+                                            </div>
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        // Stage 3 helper functions
+        function computeRankingAtEvent(eventId) {
+            if (!stage3Top50 || !stage3Trace || !stage3Trace.events) {
+                return stage3Top50 || [];
+            }
+
+            // If eventId is -1 or null, return initial ranking
+            if (eventId === null || eventId < 0) {
+                return stage3Top50.map(item => ({ ...item }));
+            }
+
+            const ranking = stage3Top50.map(item => ({ ...item }));
+            const events = stage3Trace.events;
+
+            for (let i = 0; i <= eventId && i < events.length; i++) {
+                const event = events[i];
+                const before = event.local_order_before || [];
+                const after = event.local_order_after || [];
+                
+                // Check if swap occurred
+                if (before.length === 2 && after.length === 2 && 
+                    before[0] === after[1] && before[1] === after[0]) {
+                    // Swap occurred - find indices in ranking
+                    const idxA = ranking.findIndex(r => normalizeChunkId(r.chunkId) === normalizeChunkId(before[0]));
+                    const idxB = ranking.findIndex(r => normalizeChunkId(r.chunkId) === normalizeChunkId(before[1]));
+                    
+                    if (idxA !== -1 && idxB !== -1 && Math.abs(idxA - idxB) === 1) {
+                        // Swap adjacent items
+                        [ranking[idxA], ranking[idxB]] = [ranking[idxB], ranking[idxA]];
+                        // Update ranks
+                        const minRank = Math.min(idxA, idxB) + 1;
+                        ranking[Math.min(idxA, idxB)].rank = minRank;
+                        ranking[Math.max(idxA, idxB)].rank = minRank + 1;
+                    }
+                }
+            }
+
+            return ranking;
+        }
+
+        function getEventsByPass(passId) {
+            if (!stage3Trace || !stage3Trace.events) return [];
+            return stage3Trace.events.filter(e => e.pass_id === passId);
+        }
+
+        function hasSwapInPass(passId) {
+            const events = getEventsByPass(passId);
+            return events.some(e => {
+                const before = e.local_order_before || [];
+                const after = e.local_order_after || [];
+                return before.length === 2 && after.length === 2 && 
+                       before[0] === after[1] && before[1] === after[0];
+            });
+        }
+
+        function getStabilizationPass() {
+            if (!stage3Trace || !stage3Trace.strategy) return null;
+            const maxPasses = stage3Trace.strategy.max_passes || 6;
+            
+            for (let passId = 1; passId < maxPasses; passId++) {
+                if (!hasSwapInPass(passId - 1) && !hasSwapInPass(passId)) {
+                    return passId;
+                }
+            }
+            return null;
+        }
+
+        // Stage 3 event handlers
+        function handleStage3ViewMode(mode) {
+            stage3ViewMode = mode;
+            if (mode === 'replay') {
+                stage3ActiveEventId = null;
+                stage3CurrentRanking = computeRankingAtEvent(-1);
+            }
+            renderApp();
+        }
+
+        function handleStage3EventClick(eventId) {
+            stage3ActiveEventId = eventId;
+            stage3CurrentRanking = computeRankingAtEvent(eventId);
+            renderApp();
+        }
+
+        function handleStage3PlayPause() {
+            stage3ReplayMode = stage3ReplayMode === 'playing' ? 'paused' : 'playing';
+            if (stage3ReplayMode === 'playing') {
+                autoPlayEvents();
+            }
+            renderApp();
+        }
+
+        function autoPlayEvents() {
+            if (stage3ReplayMode !== 'playing' || !stage3Trace || !stage3Trace.events) return;
+            
+            const events = stage3Trace.events;
+            if (stage3ActiveEventId === null) {
+                stage3ActiveEventId = -1;
+            }
+            
+            if (stage3ActiveEventId < events.length - 1) {
+                stage3ActiveEventId++;
+                stage3CurrentRanking = computeRankingAtEvent(stage3ActiveEventId);
+                renderApp();
+                
+                setTimeout(() => {
+                    if (stage3ReplayMode === 'playing') {
+                        autoPlayEvents();
+                    }
+                }, 1500);
+            } else {
+                stage3ReplayMode = 'paused';
+                renderApp();
+            }
+        }
+
+        function handleStage3NextEvent() {
+            if (!stage3Trace || !stage3Trace.events) return;
+            if (stage3ActiveEventId === null) stage3ActiveEventId = -1;
+            if (stage3ActiveEventId < stage3Trace.events.length - 1) {
+                stage3ActiveEventId++;
+                stage3CurrentRanking = computeRankingAtEvent(stage3ActiveEventId);
+                renderApp();
+            }
+        }
+
+        function handleStage3PrevEvent() {
+            if (stage3ActiveEventId === null || stage3ActiveEventId <= 0) {
+                stage3ActiveEventId = null;
+                stage3CurrentRanking = stage3Top50;
+            } else {
+                stage3ActiveEventId--;
+                stage3CurrentRanking = computeRankingAtEvent(stage3ActiveEventId);
+            }
+            renderApp();
+        }
+
+        function handleStage3ChunkClick(chunkId) {
+            if (!stage3Trace || !stage3Trace.events) return;
+            const events = stage3Trace.events;
+            const firstEvent = events.findIndex(e => 
+                normalizeChunkId(e.pair.a) === normalizeChunkId(chunkId) || 
+                normalizeChunkId(e.pair.b) === normalizeChunkId(chunkId)
+            );
+            if (firstEvent !== -1) {
+                stage3ActiveEventId = firstEvent;
+                stage3CurrentRanking = computeRankingAtEvent(firstEvent);
+                stage3ViewMode = 'replay';
+                renderApp();
+            }
+        }
+
+        // Stage 3 render functions
+        function renderStage3Page() {
+            const app = document.getElementById('app');
+            
+            if (!stage3Trace) {
+                app.innerHTML = '<div class="app-loading">Loading Stage 3 data...</div>';
+                return;
+            }
+
+            switch (stage3ViewMode) {
+                case 'overview':
+                    renderStage3Overview();
+                    break;
+                case 'replay':
+                    renderStage3Replay();
+                    break;
+                case 'top10':
+                    renderStage3Top10();
+                    break;
+                default:
+                    renderStage3Overview();
+            }
+        }
+
+        function renderStage3Overview() {
+            const app = document.getElementById('app');
+            const strategy = stage3Trace.strategy || {};
+            const top50 = stage3Top50 || [];
+            const events = stage3Trace.events || [];
+            const qrelDataToUse = qrelData || {};
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Stage 3 — Pairwise Referee & Bubble Promotion</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">View:</span>
+                                <span class="info-value">Overview</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="handleNavigateToHome()">Home</button>
+                            <button class="btn btn-secondary" onclick="handleNavigateToStage2()">Stage 2</button>
+                            <button class="btn btn-primary" onclick="handleStage3ViewMode('replay')">Start Stage 3 Replay</button>
+                            <button class="btn btn-primary" onclick="handleStage3ViewMode('top10')">Jump to Final Top-10</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="stage3-overview">
+                            <h2>Stage 3 Overview</h2>
+                            
+                            <div class="overview-metrics">
+                                <div class="metric-card">
+                                    <div class="metric-label">Input Candidates</div>
+                                    <div class="metric-value">${top50.length}</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Seeded Comparison Set</div>
+                                    <div class="metric-value">Top-${strategy.seed_top_n || 20}</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Max Passes</div>
+                                    <div class="metric-value">${strategy.max_passes || 6}</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Cross-check Enabled</div>
+                                    <div class="metric-value">${strategy.cross_check ? 'Yes' : 'No'}</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Total Comparisons</div>
+                                    <div class="metric-value">${events.length}</div>
+                                </div>
+                            </div>
+
+                            <div class="candidate-list-section">
+                                <h3>Top-50 Candidates from Stage 2</h3>
+                                <div class="candidate-list-header">
+                                    <span class="legend-item"><span class="legend-color seed-top"></span> Seed Top-${strategy.seed_top_n || 20}</span>
+                                    <span class="legend-item"><span class="legend-color qrel-2"></span> GT-2 (Highly Relevant)</span>
+                                    <span class="legend-item"><span class="legend-color qrel-1"></span> GT-1 (Relevant)</span>
+                                    <span class="legend-item"><span class="legend-color qrel-0"></span> qrel=0</span>
+                                </div>
+                                <div class="candidate-list-container">
+                                    <table class="candidate-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Rank</th>
+                                                <th>Chunk ID</th>
+                                                <th>Stage 2 Final Score</th>
+                                                <th>Appearances</th>
+                                                <th>Ground Truth</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${top50.map((item, idx) => {
+                                                const chunkId = normalizeChunkId(item.chunkId);
+                                                const qrel = qrelDataToUse[chunkId] || 0;
+                                                const isSeed = idx < (strategy.seed_top_n || 20);
+                                                return `
+                                                    <tr class="candidate-row ${isSeed ? 'seed-row' : ''} qrel-${qrel}" 
+                                                        onclick="handleStage3ChunkClick('${item.chunkId}')">
+                                                        <td>${item.rank}</td>
+                                                        <td>${item.chunkId}</td>
+                                                        <td>${item.stage2Score ? item.stage2Score.toFixed(2) : 'N/A'}</td>
+                                                        <td>${item.appearances || 0}</td>
+                                                        <td>
+                                                            ${qrel === 2 ? '<span class="gt-badge gt-2">GT-2</span>' : ''}
+                                                            ${qrel === 1 ? '<span class="gt-badge gt-1">GT-1</span>' : ''}
+                                                            ${qrel === 0 ? '<span class="gt-badge gt-0">qrel=0</span>' : ''}
+                                                        </td>
+                                                    </tr>
+                                                `;
+                                            }).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function renderStage3Replay() {
+            const app = document.getElementById('app');
+            const strategy = stage3Trace.strategy || {};
+            const events = stage3Trace.events || [];
+            const activeEvent = stage3ActiveEventId !== null && stage3ActiveEventId >= 0 
+                ? events[stage3ActiveEventId] : null;
+            const ranking = stage3CurrentRanking || computeRankingAtEvent(stage3ActiveEventId !== null ? stage3ActiveEventId : -1);
+            const qrelDataToUse = qrelData || {};
+            const seedTopN = strategy.seed_top_n || 20;
+
+            // Get events by pass
+            const passes = [];
+            const maxPasses = strategy.max_passes || 6;
+            for (let i = 0; i < maxPasses; i++) {
+                passes.push({
+                    passId: i,
+                    events: events.filter(e => e.pass_id === i),
+                    hasSwaps: hasSwapInPass(i)
+                });
+            }
+
+            const stabilizationPass = getStabilizationPass();
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Stage 3 — Pairwise Referee & Bubble Promotion</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">View:</span>
+                                <span class="info-value">Replay</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="handleStage3ViewMode('overview')">Overview</button>
+                            <button class="btn btn-primary" onclick="handleStage3ViewMode('top10')">Final Top-10</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="stage3-replay">
+                            <div class="replay-layout">
+                                <!-- Left: Event Timeline -->
+                                <div class="event-timeline-column">
+                                    <div class="timeline-header">
+                                        <h3>Event Timeline</h3>
+                                        <div class="replay-controls">
+                                            <button class="btn btn-sm" onclick="handleStage3PrevEvent()" ${stage3ActiveEventId === null || stage3ActiveEventId === 0 ? 'disabled' : ''}>◀ Prev</button>
+                                            <button class="btn btn-sm" onclick="handleStage3PlayPause()">
+                                                ${stage3ReplayMode === 'playing' ? '⏸ Pause' : '▶ Play'}
+                                            </button>
+                                            <button class="btn btn-sm" onclick="handleStage3NextEvent()" ${stage3ActiveEventId !== null && stage3ActiveEventId >= events.length - 1 ? 'disabled' : ''}>Next ▶</button>
+                                        </div>
+                                    </div>
+                                    <div class="event-list" id="eventList">
+                                        ${events.map((event, idx) => {
+                                            const isActive = stage3ActiveEventId === idx;
+                                            const before = event.local_order_before || [];
+                                            const after = event.local_order_after || [];
+                                            const swapped = before.length === 2 && after.length === 2 && 
+                                                           before[0] === after[1] && before[1] === after[0];
+                                            return `
+                                                <div class="event-item ${isActive ? 'active' : ''} ${swapped ? 'swapped' : ''}" 
+                                                     onclick="handleStage3EventClick(${idx})">
+                                                    <div class="event-id">#${event.event_id}</div>
+                                                    <div class="event-info">
+                                                        <div class="event-pass">Pass ${event.pass_id}</div>
+                                                        <div class="event-mode">${event.mode === 'neighbor' ? 'Neighbor' : 'Cross'}</div>
+                                                        <div class="event-pair">${event.pair.a} vs ${event.pair.b}</div>
+                                                        <div class="event-winner">Winner: ${event.decision.winner}</div>
+                                                        ${swapped ? '<div class="swap-indicator">↕ Swap</div>' : ''}
+                                                    </div>
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                </div>
+
+                                <!-- Middle: Ranking Lane -->
+                                <div class="ranking-lane-column">
+                                    <div class="ranking-lane-header">
+                                        <h3>Current Ranking</h3>
+                                        <div class="ranking-info">
+                                            ${activeEvent ? `Event #${activeEvent.event_id} - Pass ${activeEvent.pass_id}` : 'Initial Ranking'}
+                                        </div>
+                                    </div>
+                                    <div class="ranking-list" id="rankingList">
+                                        ${ranking.slice(0, seedTopN).map((item, idx) => {
+                                            const chunkId = normalizeChunkId(item.chunkId);
+                                            const qrel = qrelDataToUse[chunkId] || 0;
+                                            const isTop10 = idx < 10;
+                                            const isComparing = activeEvent && (
+                                                normalizeChunkId(activeEvent.pair.a) === chunkId || 
+                                                normalizeChunkId(activeEvent.pair.b) === chunkId
+                                            );
+                                            const isWinner = activeEvent && normalizeChunkId(activeEvent.decision.winner) === chunkId;
+                                            const isA = activeEvent && normalizeChunkId(activeEvent.pair.a) === chunkId;
+                                            const isB = activeEvent && normalizeChunkId(activeEvent.pair.b) === chunkId;
+
+                                            let className = `rank-row qrel-${qrel}`;
+                                            if (isTop10) className += ' top10-zone';
+                                            if (isComparing) {
+                                                className += isA ? ' comparison-chunk-a' : ' comparison-chunk-b';
+                                            }
+                                            if (isWinner) className += ' winner-chunk';
+
+                                            return `
+                                                <div class="${className}" data-chunk-id="${chunkId}">
+                                                    <div class="rank-number">${item.rank}</div>
+                                                    <div class="chunk-id">${chunkId}</div>
+                                                    <div class="gt-badge-container">
+                                                        ${qrel === 2 ? '<span class="gt-badge gt-2">GT-2</span>' : ''}
+                                                        ${qrel === 1 ? '<span class="gt-badge gt-1">GT-1</span>' : ''}
+                                                    </div>
+                                                    <div class="stage2-score">Score: ${item.stage2Score ? item.stage2Score.toFixed(2) : 'N/A'}</div>
+                                                    ${isTop10 ? '<div class="top10-label">Top-10</div>' : ''}
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                    ${activeEvent ? `
+                                        <div class="comparison-result">
+                                            <div class="comparison-summary">
+                                                ${(() => {
+                                                    const before = activeEvent.local_order_before || [];
+                                                    const after = activeEvent.local_order_after || [];
+                                                    const swapped = before.length === 2 && after.length === 2 && 
+                                                                  before[0] === after[1] && before[1] === after[0];
+                                                    if (swapped) {
+                                                        return `<div class="swap-message">✓ Swap occurred: ${after[0]} moved up</div>`;
+                                                    } else {
+                                                        return `<div class="no-swap-message">No swap — ranking unchanged</div>`;
+                                                    }
+                                                })()}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+
+                                <!-- Right: Decision Explanation Panel -->
+                                <div class="decision-panel-column">
+                                    <div class="decision-panel-header">
+                                        <h3>Decision Explanation</h3>
+                                    </div>
+                                    ${activeEvent ? renderDecisionPanel(activeEvent) : `
+                                        <div class="decision-panel-empty">
+                                            <p>Select an event to view decision explanation</p>
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+
+                            <!-- Bottom: Pass Progress -->
+                            <div class="pass-progress-section">
+                                <h3>Pass Progress & Convergence</h3>
+                                <div class="pass-tabs">
+                                    ${passes.map(pass => `
+                                        <div class="pass-tab ${pass.passId === (activeEvent ? activeEvent.pass_id : 0) ? 'active' : ''}">
+                                            Pass ${pass.passId} (${pass.events.length} events)
+                                            ${pass.hasSwaps ? '<span class="swap-indicator">↕</span>' : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                ${stabilizationPass !== null ? `
+                                    <div class="convergence-message">
+                                        ✓ Ranking stabilized after Pass ${stabilizationPass}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+
+            // Scroll active event into view
+            if (stage3ActiveEventId !== null) {
+                setTimeout(() => {
+                    const eventEl = document.querySelector(`.event-item.active`);
+                    if (eventEl) {
+                        eventEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 100);
+            }
+        }
+
+        function renderDecisionPanel(event) {
+            const qrelDataToUse = qrelData || {};
+            const chunkAId = normalizeChunkId(event.pair.a);
+            const chunkBId = normalizeChunkId(event.pair.b);
+            const winnerId = normalizeChunkId(event.decision.winner);
+            const loserId = winnerId === chunkAId ? chunkBId : chunkAId;
+            
+            const chunkAText = chunkTexts && chunkTexts[chunkAId] ? chunkTexts[chunkAId] : '';
+            const chunkBText = chunkTexts && chunkTexts[chunkBId] ? chunkTexts[chunkBId] : '';
+            
+            const cardA = chunkCards && chunkCards.get(chunkAId);
+            const cardB = chunkCards && chunkCards.get(chunkBId);
+
+            return `
+                <div class="decision-panel-content">
+                    <div class="winner-section">
+                        <div class="winner-header">
+                            <h4>Winner: Chunk ${event.decision.winner}</h4>
+                            <div class="confidence-bar">
+                                <div class="confidence-label">Confidence: ${event.decision.confidence !== undefined ? (event.decision.confidence * 100).toFixed(0) : '0'}%</div>
+                                <div class="confidence-progress" style="width: ${event.decision.confidence !== undefined ? (event.decision.confidence * 100) : 0}%"></div>
+                            </div>
+                        </div>
+                        <div class="rationale-section">
+                            <h5>Rationale</h5>
+                            <p class="rationale-text">${escapeHtml(event.decision.rationale || 'No rationale provided')}</p>
+                        </div>
+                        <div class="why-not-section">
+                            <h5>Why Not the Loser</h5>
+                            <p class="why-not-text">${escapeHtml(event.decision.why_not_loser || 'No explanation provided')}</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-cards">
+                        <div class="mini-card ${winnerId === chunkAId ? 'winner' : ''}">
+                            <div class="mini-card-header">
+                                <span class="chunk-id">Chunk ${event.pair.a}</span>
+                                ${qrelDataToUse[chunkAId] === 2 ? '<span class="gt-badge gt-2">GT-2</span>' : ''}
+                                ${qrelDataToUse[chunkAId] === 1 ? '<span class="gt-badge gt-1">GT-1</span>' : ''}
+                            </div>
+                            <div class="mini-card-score">Stage 2: ${event.pair.a_stage2_final_score ? event.pair.a_stage2_final_score.toFixed(2) : 'N/A'}</div>
+                            ${cardA && cardA.card && cardA.card.summary ? `
+                                <div class="mini-card-summary">${escapeHtml(cardA.card.summary.substring(0, 150))}...</div>
+                            ` : ''}
+                        </div>
+
+                        <div class="mini-card ${winnerId === chunkBId ? 'winner' : ''}">
+                            <div class="mini-card-header">
+                                <span class="chunk-id">Chunk ${event.pair.b}</span>
+                                ${qrelDataToUse[chunkBId] === 2 ? '<span class="gt-badge gt-2">GT-2</span>' : ''}
+                                ${qrelDataToUse[chunkBId] === 1 ? '<span class="gt-badge gt-1">GT-1</span>' : ''}
+                            </div>
+                            <div class="mini-card-score">Stage 2: ${event.pair.b_stage2_final_score ? event.pair.b_stage2_final_score.toFixed(2) : 'N/A'}</div>
+                            ${cardB && cardB.card && cardB.card.summary ? `
+                                <div class="mini-card-summary">${escapeHtml(cardB.card.summary.substring(0, 150))}...</div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderStage3Top10() {
+            const app = document.getElementById('app');
+            const top10 = stage3Top10 && stage3Top10.top10 ? stage3Top10.top10 : [];
+            const qrelDataToUse = qrelData || {};
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Stage 3 — Pairwise Referee & Bubble Promotion</h1>
+                        <div class="header-info">
+                            <div class="info-item">
+                                <span class="info-label">View:</span>
+                                <span class="info-value">Final Top-10</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="handleStage3ViewMode('overview')">Overview</button>
+                            <button class="btn btn-secondary" onclick="handleStage3ViewMode('replay')">Replay View</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="stage3-top10">
+                            <h2>Final Top-10 Evidence</h2>
+                            
+                            <div class="top10-list">
+                                ${top10.map(item => {
+                                    const chunkId = normalizeChunkId(item.chunk_uid);
+                                    const qrel = qrelDataToUse[chunkId] || 0;
+                                    const card = chunkCards && chunkCards.get(chunkId);
+                                    const chunkText = chunkTexts && chunkTexts[chunkId] ? chunkTexts[chunkId] : '';
+
+                                    return `
+                                        <div class="top10-card qrel-${qrel}" onclick="handleStage3ChunkClick('${item.chunk_uid}')">
+                                            <div class="top10-rank">#${item.rank}</div>
+                                            <div class="top10-content">
+                                                <div class="top10-header">
+                                                    <span class="top10-chunk-id">Chunk ${item.chunk_uid}</span>
+                                                    ${qrel === 2 ? '<span class="gt-badge gt-2">GT-2</span>' : ''}
+                                                    ${qrel === 1 ? '<span class="gt-badge gt-1">GT-1</span>' : ''}
+                                                    ${qrel === 0 ? '<span class="gt-badge gt-0">qrel=0</span>' : ''}
+                                                </div>
+                                                <div class="top10-stats">
+                                                    <span>Stage 2 Score: ${item.stage2_final_score ? item.stage2_final_score.toFixed(2) : 'N/A'}</span>
+                                                    <span>Appearances: ${item.appearances || 0}</span>
+                                                    <span>Mean: ${item.mean_score ? item.mean_score.toFixed(2) : 'N/A'}</span>
+                                                </div>
+                                                ${card && card.card && card.card.summary ? `
+                                                    <div class="top10-summary">${escapeHtml(card.card.summary)}</div>
+                                                ` : ''}
+                                                <button class="btn btn-sm" onclick="event.stopPropagation(); handleStage3ViewMode('replay'); handleStage3ChunkClick('${item.chunk_uid}');">
+                                                    View How This Chunk Won
+                                                </button>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
     </script>
 </body>
 </html>

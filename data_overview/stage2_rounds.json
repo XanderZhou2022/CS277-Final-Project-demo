@@ -1,0 +1,1550 @@
+{
+  "question": "What impact do weather-related events have on Ameren Corporation’s reported revenue and margins?",
+  "rounds": [
+    {
+      "round_id": 0,
+      "sampled_chunk_uids": [
+        "343",
+        "38",
+        "25",
+        "357",
+        "105",
+        "81",
+        "75",
+        "59",
+        "37",
+        "348",
+        "266",
+        "35",
+        "274",
+        "199",
+        "26",
+        "72",
+        "79",
+        "253",
+        "276",
+        "268",
+        "68"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "81",
+          "score": 95,
+          "justification": "This chunk directly addresses the impact of weather on Ameren's electric and natural gas margins, providing specific financial figures and explanations of margin changes, making it highly relevant to the question."
+        },
+        {
+          "chunk_uid": "79",
+          "score": 90,
+          "justification": "The chunk details changes in electric and natural gas margins due to weather effects, sales volumes, and cost recovery mechanisms, providing a detailed breakdown of financial changes, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "105",
+          "score": 85,
+          "justification": "This chunk discusses major storm restoration costs and their impact on cash flow and operating activities, providing specific financial figures, which is relevant to understanding weather-related impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "35",
+          "score": 80,
+          "justification": "The chunk discusses risks associated with Ameren's operations, including potential adverse effects on financial position due to weather-related risks, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "199",
+          "score": 75,
+          "justification": "This chunk discusses regulatory changes affecting Ameren Missouri's revenue, which can be indirectly related to weather impacts if such changes are driven by weather-related infrastructure needs."
+        },
+        {
+          "chunk_uid": "38",
+          "score": 70,
+          "justification": "While primarily focused on cybersecurity risks, this chunk mentions potential impacts on revenue and costs, which could be indirectly related to weather events affecting infrastructure."
+        },
+        {
+          "chunk_uid": "25",
+          "score": 65,
+          "justification": "The chunk discusses fuel costs and FAC recoveries, which could be influenced by weather-related demand changes, though it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "75",
+          "score": 60,
+          "justification": "This chunk provides a detailed breakdown of financial performance, including electric and natural gas margins, which could be indirectly affected by weather, though it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "72",
+          "score": 55,
+          "justification": "The chunk provides a breakdown of financial performance, including electric and natural gas margins, which could be indirectly influenced by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "59",
+          "score": 50,
+          "justification": "The chunk discusses energy-efficiency programs and capital investment, which could be indirectly related to weather impacts, but it does not directly address the question."
+        },
+        {
+          "chunk_uid": "357",
+          "score": 40,
+          "justification": "This chunk presents revenue figures for Ameren entities but lacks direct discussion of weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "68",
+          "score": 30,
+          "justification": "The chunk provides net income and earnings per share data, which could be indirectly affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "26",
+          "score": 25,
+          "justification": "The chunk provides operating statistics for natural gas sales and revenues, which could be indirectly influenced by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "348",
+          "score": 20,
+          "justification": "This chunk provides cash and cash equivalents data, which is not directly related to weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "266",
+          "score": 15,
+          "justification": "The chunk discusses fair value reconciliation of derivative contracts, which is not directly related to weather impacts on Ameren's revenue or margins."
+        },
+        {
+          "chunk_uid": "276",
+          "score": 10,
+          "justification": "The chunk provides details on investments in securities, which is not directly related to weather impacts on Ameren's revenue or margins."
+        },
+        {
+          "chunk_uid": "268",
+          "score": 5,
+          "justification": "The chunk discusses valuation techniques for derivative contracts, which is not directly related to weather impacts on Ameren's revenue or margins."
+        },
+        {
+          "chunk_uid": "37",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "343",
+          "score": 0,
+          "justification": "This chunk contains a non-substantive disclosure with no specific context or relevance to weather impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "274",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "253",
+          "score": 0,
+          "justification": "No justification provided."
+        }
+      ],
+      "top10": [
+        "81",
+        "79",
+        "105",
+        "35",
+        "199",
+        "38",
+        "25",
+        "75",
+        "72",
+        "59"
+      ]
+    },
+    {
+      "round_id": 1,
+      "sampled_chunk_uids": [
+        "354",
+        "345",
+        "352",
+        "266",
+        "198",
+        "75",
+        "204",
+        "274",
+        "105",
+        "398",
+        "21",
+        "371",
+        "62",
+        "199",
+        "153",
+        "61",
+        "72",
+        "37",
+        "35",
+        "183",
+        "36"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "35",
+          "score": 90,
+          "justification": "This chunk discusses risks associated with Ameren Missouri's operations, including potential adverse effects on operations and financial position due to weather-related risks like coal supply issues and natural gas distribution hazards."
+        },
+        {
+          "chunk_uid": "105",
+          "score": 85,
+          "justification": "The chunk highlights major storm restoration costs, which directly relate to weather-related events impacting Ameren's cash flow and operating activities."
+        },
+        {
+          "chunk_uid": "198",
+          "score": 80,
+          "justification": "The chunk discusses regulatory mechanisms affecting Ameren Illinois' financial results, which can be influenced by weather-related events impacting energy savings goals and natural gas margins."
+        },
+        {
+          "chunk_uid": "199",
+          "score": 75,
+          "justification": "This chunk mentions infrastructure investments and depreciation changes, which can be indirectly affected by weather-related events impacting Ameren Missouri's revenue requirements."
+        },
+        {
+          "chunk_uid": "37",
+          "score": 70,
+          "justification": "The chunk addresses risks related to Ameren's operations, including potential impacts on financial position due to weather-related risks like carbon emission reduction targets."
+        },
+        {
+          "chunk_uid": "274",
+          "score": 65,
+          "justification": "The chunk discusses decommissioning costs and regulatory liabilities, which can be indirectly influenced by weather-related events affecting Ameren's financial metrics."
+        },
+        {
+          "chunk_uid": "75",
+          "score": 60,
+          "justification": "The chunk provides a breakdown of Ameren Illinois's financial performance, including electric and natural gas margins, which can be affected by weather-related events."
+        },
+        {
+          "chunk_uid": "62",
+          "score": 55,
+          "justification": "The chunk discusses revenue requirements and rate adjustments, which can be influenced by weather-related events impacting Ameren Illinois' financial metrics."
+        },
+        {
+          "chunk_uid": "21",
+          "score": 50,
+          "justification": "The chunk provides electric operating statistics and revenues, which can be indirectly affected by weather-related events impacting Ameren's kilowatthour sales."
+        },
+        {
+          "chunk_uid": "153",
+          "score": 45,
+          "justification": "The chunk provides detailed financial statements for Ameren, including operating revenues and expenses, which can be indirectly influenced by weather-related events."
+        },
+        {
+          "chunk_uid": "204",
+          "score": 40,
+          "justification": "The chunk outlines revenue requirements and ROE, which can be indirectly influenced by weather-related events affecting Ameren Illinois' financial metrics."
+        },
+        {
+          "chunk_uid": "61",
+          "score": 35,
+          "justification": "The chunk outlines revenue requirements and capital structure, which can be indirectly influenced by weather-related events affecting Ameren Illinois' financial metrics."
+        },
+        {
+          "chunk_uid": "72",
+          "score": 30,
+          "justification": "The chunk provides a breakdown of Ameren's financial performance, including electric and natural gas margins, which can be indirectly affected by weather-related events."
+        },
+        {
+          "chunk_uid": "183",
+          "score": 25,
+          "justification": "The chunk provides a breakdown of cash flows, which can be indirectly influenced by weather-related events affecting Ameren's financial metrics."
+        },
+        {
+          "chunk_uid": "36",
+          "score": 20,
+          "justification": "The chunk discusses risks related to aging infrastructure and regulatory challenges, which can be indirectly influenced by weather-related events affecting Ameren's operations."
+        },
+        {
+          "chunk_uid": "398",
+          "score": 15,
+          "justification": "The chunk provides a statement of cash flows, which can be indirectly influenced by weather-related events affecting Ameren's financial metrics."
+        },
+        {
+          "chunk_uid": "266",
+          "score": 10,
+          "justification": "The chunk provides a fair value reconciliation, which is not directly related to weather-related events impacting Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "352",
+          "score": 5,
+          "justification": "The chunk provides details on accounts receivable balances, which are not directly related to weather-related events impacting Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "371",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "354",
+          "score": 0,
+          "justification": "The chunk discusses asset retirement obligations, which are not related to weather-related events impacting Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "345",
+          "score": 0,
+          "justification": "The chunk discusses legal challenges related to emissions standards, which are not related to weather-related events impacting Ameren's revenue and margins."
+        }
+      ],
+      "top10": [
+        "35",
+        "105",
+        "198",
+        "199",
+        "37",
+        "274",
+        "75",
+        "62",
+        "21",
+        "153"
+      ]
+    },
+    {
+      "round_id": 2,
+      "sampled_chunk_uids": [
+        "165",
+        "159",
+        "276",
+        "83",
+        "398",
+        "28",
+        "356",
+        "205",
+        "264",
+        "57",
+        "183",
+        "34",
+        "267",
+        "123",
+        "342",
+        "313",
+        "171",
+        "272",
+        "67",
+        "353",
+        "31"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "67",
+          "score": 90,
+          "justification": "This card discusses cost recovery mechanisms and risk management strategies related to commodity risks, which are directly relevant to understanding the impact of weather-related events on Ameren's financials."
+        },
+        {
+          "chunk_uid": "83",
+          "score": 85,
+          "justification": "The card provides detailed information on changes in margins and revenues for Ameren Illinois, including factors like cost recovery mechanisms and sales volumes, which can be influenced by weather-related events."
+        },
+        {
+          "chunk_uid": "34",
+          "score": 80,
+          "justification": "This card highlights operational risks, including coal supply issues, which can be exacerbated by weather-related events, impacting Ameren's operations and financials."
+        },
+        {
+          "chunk_uid": "123",
+          "score": 75,
+          "justification": "The card discusses Ameren's outlook, including regulatory mechanisms and revenue requirements, which can be affected by weather-related events, impacting revenue and margins."
+        },
+        {
+          "chunk_uid": "205",
+          "score": 70,
+          "justification": "This card discusses revenue requirements and adjustments, which can be influenced by weather-related events, affecting Ameren's financial performance."
+        },
+        {
+          "chunk_uid": "31",
+          "score": 65,
+          "justification": "The card discusses legal and regulatory challenges, including environmental compliance costs, which can be related to weather events impacting Ameren's financials."
+        },
+        {
+          "chunk_uid": "28",
+          "score": 60,
+          "justification": "This card discusses regulatory risks affecting Ameren's operations and financial position, which can be indirectly influenced by weather-related events."
+        },
+        {
+          "chunk_uid": "165",
+          "score": 55,
+          "justification": "While the card provides detailed financial statements, it lacks direct information on the impact of weather-related events on Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "159",
+          "score": 50,
+          "justification": "The card provides cash flow information but does not directly address the impact of weather-related events on Ameren's financials."
+        },
+        {
+          "chunk_uid": "276",
+          "score": 45,
+          "justification": "This card provides details on investments in securities but does not directly relate to the impact of weather-related events on Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "398",
+          "score": 40,
+          "justification": "The card provides cash flow details but lacks direct relevance to weather-related impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "356",
+          "score": 35,
+          "justification": "This card provides details on liabilities and expenses but does not directly address weather-related impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "264",
+          "score": 30,
+          "justification": "The card provides data on assets and liabilities but lacks direct relevance to weather-related impacts on Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "57",
+          "score": 25,
+          "justification": "The card discusses regulatory frameworks and allowed ROEs, which are not directly related to weather-related impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "183",
+          "score": 20,
+          "justification": "This card provides cash flow information but does not directly address the impact of weather-related events on Ameren's financials."
+        },
+        {
+          "chunk_uid": "267",
+          "score": 15,
+          "justification": "The card provides financial balance details but lacks direct relevance to weather-related impacts on Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "342",
+          "score": 10,
+          "justification": "The card provides financial metrics but does not directly address weather-related impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "313",
+          "score": 5,
+          "justification": "This card presents revenue figures but lacks direct relevance to weather-related impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "353",
+          "score": 0,
+          "justification": "The card provides inventory data but does not address weather-related impacts on Ameren's financials."
+        },
+        {
+          "chunk_uid": "272",
+          "score": 0,
+          "justification": "The card provides financial instrument details but lacks direct relevance to weather-related impacts on Ameren's revenue and margins."
+        },
+        {
+          "chunk_uid": "171",
+          "score": 0,
+          "justification": "The card provides cash flow details but does not address weather-related impacts on Ameren's financials."
+        }
+      ],
+      "top10": [
+        "67",
+        "83",
+        "34",
+        "123",
+        "205",
+        "31",
+        "28",
+        "165",
+        "159",
+        "276"
+      ]
+    },
+    {
+      "round_id": 3,
+      "sampled_chunk_uids": [
+        "28",
+        "346",
+        "79",
+        "374",
+        "123",
+        "34",
+        "36",
+        "183",
+        "105",
+        "205",
+        "343",
+        "171",
+        "62",
+        "177",
+        "165",
+        "69",
+        "347",
+        "86",
+        "352",
+        "349",
+        "344"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "79",
+          "score": 95,
+          "justification": "This card directly addresses the impact of weather on Ameren's revenue and margins, providing specific numeric changes in electric and natural gas margins due to weather effects."
+        },
+        {
+          "chunk_uid": "86",
+          "score": 90,
+          "justification": "The card discusses storm-related costs and their impact on Ameren's operations and maintenance expenses, which is relevant to understanding weather-related impacts on margins."
+        },
+        {
+          "chunk_uid": "105",
+          "score": 85,
+          "justification": "This card highlights major storm restoration costs and their effect on cash flow, directly linking weather events to financial metrics."
+        },
+        {
+          "chunk_uid": "69",
+          "score": 80,
+          "justification": "The card discusses factors affecting Ameren's net income, including sales volumes, which can be influenced by weather, thus indirectly addressing the question."
+        },
+        {
+          "chunk_uid": "123",
+          "score": 75,
+          "justification": "While primarily focused on future outlook, the card mentions regulatory mechanisms that could be influenced by weather-related events, indirectly affecting revenue and margins."
+        },
+        {
+          "chunk_uid": "62",
+          "score": 70,
+          "justification": "The card discusses revenue requirements and adjustments, which can be indirectly affected by weather-related changes in energy demand."
+        },
+        {
+          "chunk_uid": "205",
+          "score": 65,
+          "justification": "This card covers revenue adjustments and energy-efficiency rates, which could be influenced by weather patterns, though it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "34",
+          "score": 60,
+          "justification": "The card discusses operational risks including coal supply issues, which can be indirectly affected by weather, but does not directly address revenue or margins."
+        },
+        {
+          "chunk_uid": "28",
+          "score": 55,
+          "justification": "The card discusses regulatory risks that can affect financial position, but it does not directly address weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "36",
+          "score": 50,
+          "justification": "The card discusses risks related to infrastructure and regulatory challenges, which can be indirectly influenced by weather, but lacks direct evidence of weather impacts on financial metrics."
+        },
+        {
+          "chunk_uid": "346",
+          "score": 45,
+          "justification": "The card discusses regulatory and compliance activities with financial implications, but does not directly address weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "183",
+          "score": 40,
+          "justification": "The card provides a breakdown of cash flows but does not directly address weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "171",
+          "score": 35,
+          "justification": "The card provides financial statements but lacks direct information on weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "177",
+          "score": 30,
+          "justification": "The card provides financial statements without direct reference to weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "165",
+          "score": 25,
+          "justification": "The card provides financial statements but does not address weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "374",
+          "score": 20,
+          "justification": "The card provides a breakdown of revenues but lacks direct information on weather-related impacts."
+        },
+        {
+          "chunk_uid": "352",
+          "score": 15,
+          "justification": "The card discusses accounts receivable balances without addressing weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "349",
+          "score": 10,
+          "justification": "The card discusses restricted cash and accounts receivable without addressing weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "344",
+          "score": 5,
+          "justification": "The card discusses environmental compliance costs without addressing weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "347",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "343",
+          "score": 0,
+          "justification": "The card contains non-substantive disclosure without relevance to weather-related impacts on revenue or margins."
+        }
+      ],
+      "top10": [
+        "79",
+        "86",
+        "105",
+        "69",
+        "123",
+        "62",
+        "205",
+        "34",
+        "28",
+        "36"
+      ]
+    },
+    {
+      "round_id": 4,
+      "sampled_chunk_uids": [
+        "33",
+        "276",
+        "343",
+        "63",
+        "264",
+        "356",
+        "81",
+        "62",
+        "206",
+        "183",
+        "86",
+        "350",
+        "268",
+        "75",
+        "349",
+        "142",
+        "374",
+        "377",
+        "30",
+        "79",
+        "26"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "81",
+          "score": 95,
+          "justification": "This chunk directly addresses the impact of weather on Ameren's electric and natural gas margins, providing specific financial figures and explanations of margin changes, making it highly relevant to the question."
+        },
+        {
+          "chunk_uid": "79",
+          "score": 90,
+          "justification": "The chunk details changes in electric and natural gas margins due to weather effects, sales volumes, and cost recovery mechanisms, directly addressing the question with specific numeric values."
+        },
+        {
+          "chunk_uid": "86",
+          "score": 85,
+          "justification": "This chunk discusses storm-related costs and their impact on Ameren's operations and maintenance expenses, providing specific figures and context, which is relevant to understanding weather-related impacts."
+        },
+        {
+          "chunk_uid": "63",
+          "score": 80,
+          "justification": "While primarily focused on operations, this chunk includes financial metrics and project timelines that could be indirectly affected by weather-related events, though it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "62",
+          "score": 75,
+          "justification": "The chunk discusses regulatory decisions affecting revenue, which could be indirectly influenced by weather-related events, but it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "30",
+          "score": 70,
+          "justification": "This chunk covers regulatory risks and performance metrics that could be influenced by weather-related events, though it does not directly address weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "26",
+          "score": 65,
+          "justification": "The chunk provides operating statistics for natural gas sales and revenues, which could be affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "142",
+          "score": 60,
+          "justification": "The chunk discusses risk management strategies related to commodity price fluctuations, which could be indirectly affected by weather, but it does not directly address weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "206",
+          "score": 55,
+          "justification": "This chunk discusses regulatory actions affecting revenue, which could be indirectly influenced by weather-related events, but it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "33",
+          "score": 50,
+          "justification": "The chunk focuses on ESG goals and operational risks, which could be indirectly related to weather events, but it does not directly address the impact on revenue or margins."
+        },
+        {
+          "chunk_uid": "183",
+          "score": 40,
+          "justification": "The chunk provides a breakdown of cash flows, which could be indirectly affected by weather-related events, but it does not directly address weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "374",
+          "score": 35,
+          "justification": "The chunk provides a breakdown of revenues, which could be indirectly affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "377",
+          "score": 30,
+          "justification": "The chunk provides revenue figures, which could be indirectly affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "264",
+          "score": 25,
+          "justification": "The chunk provides financial data on assets and liabilities, which could be indirectly affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "356",
+          "score": 20,
+          "justification": "The chunk provides details on liabilities and expenses, which could be indirectly affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "268",
+          "score": 15,
+          "justification": "The chunk discusses valuation techniques for derivative contracts, which could be indirectly affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "350",
+          "score": 10,
+          "justification": "The chunk provides a comparison of financial metrics, which could be indirectly affected by weather, but it does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "276",
+          "score": 5,
+          "justification": "The chunk provides details on investment costs and fair value, which are not directly related to weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "75",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "349",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "343",
+          "score": 0,
+          "justification": "The chunk is a non-substantive disclosure without specific context or relevance to financial metrics or entities, and does not address weather impacts."
+        }
+      ],
+      "top10": [
+        "81",
+        "79",
+        "86",
+        "63",
+        "62",
+        "30",
+        "26",
+        "142",
+        "206",
+        "33"
+      ]
+    },
+    {
+      "round_id": 5,
+      "sampled_chunk_uids": [
+        "398",
+        "129",
+        "195",
+        "86",
+        "31",
+        "72",
+        "269",
+        "354",
+        "345",
+        "211",
+        "194",
+        "344",
+        "205",
+        "60",
+        "83",
+        "59",
+        "81",
+        "366",
+        "268",
+        "264",
+        "273"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "86",
+          "score": 95,
+          "justification": "This card directly addresses storm-related costs and their impact on Ameren's expenses, providing specific numeric values and context within the MD&A section, which is highly relevant to the question."
+        },
+        {
+          "chunk_uid": "81",
+          "score": 90,
+          "justification": "The card discusses the impact of weather on Ameren's electric and natural gas margins, providing detailed financial figures and explanations, making it highly relevant to the question."
+        },
+        {
+          "chunk_uid": "83",
+          "score": 85,
+          "justification": "This card covers changes in margins and revenues due to cost recovery mechanisms and sales volumes, which can be influenced by weather, providing numeric data and context in the MD&A section."
+        },
+        {
+          "chunk_uid": "79",
+          "score": 80,
+          "justification": "The card discusses Ameren's financial performance, including electric and natural gas margins, with factors such as weather impacting results, providing relevant financial figures."
+        },
+        {
+          "chunk_uid": "82",
+          "score": 75,
+          "justification": "This card provides insights into Ameren's financial performance, including electric margins and factors like weather, with detailed financial figures, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "105",
+          "score": 70,
+          "justification": "The card discusses Ameren's financial performance, including electric margins, with factors such as weather impacting results, providing relevant financial figures."
+        },
+        {
+          "chunk_uid": "106",
+          "score": 65,
+          "justification": "This card provides insights into Ameren's financial performance, including electric margins and factors like weather, with detailed financial figures, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "194",
+          "score": 60,
+          "justification": "The card discusses regulatory frameworks and revenue adjustments, which can be indirectly influenced by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "210",
+          "score": 55,
+          "justification": "This card outlines accounting policies related to regulatory assets and liabilities, which can be indirectly affected by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "211",
+          "score": 50,
+          "justification": "The card discusses accounting policies related to regulatory assets and liabilities, which can be indirectly influenced by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "398",
+          "score": 30,
+          "justification": "The card provides a condensed statement of cash flows, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "129",
+          "score": 25,
+          "justification": "The card discusses liquidity and capital expenditures, which are not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "195",
+          "score": 20,
+          "justification": "The card discusses regulatory frameworks and rate-setting mechanisms, which are not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "31",
+          "score": 15,
+          "justification": "The card discusses legal and regulatory challenges, which are not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "72",
+          "score": 10,
+          "justification": "The card provides a breakdown of financial performance, but does not directly address weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "354",
+          "score": 5,
+          "justification": "The card provides a reconciliation of Asset Retirement Obligations, which is not related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "345",
+          "score": 5,
+          "justification": "The card discusses legal challenges related to emissions standards, which are not related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "344",
+          "score": 5,
+          "justification": "The card discusses environmental compliance costs, which are not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "269",
+          "score": 5,
+          "justification": "The card discusses fair value measurements for commodities, which are not related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "205",
+          "score": 5,
+          "justification": "The card discusses revenue requirements and adjustments, which are not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "60",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "59",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "366",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "273",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "268",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "264",
+          "score": 0,
+          "justification": "No justification provided."
+        }
+      ],
+      "top10": [
+        "86",
+        "81",
+        "83",
+        "79",
+        "82",
+        "105",
+        "106",
+        "194",
+        "210",
+        "211"
+      ]
+    },
+    {
+      "round_id": 6,
+      "sampled_chunk_uids": [
+        "199",
+        "273",
+        "195",
+        "171",
+        "75",
+        "59",
+        "258",
+        "211",
+        "35",
+        "368",
+        "29",
+        "38",
+        "61",
+        "342",
+        "62",
+        "379",
+        "349",
+        "275",
+        "31",
+        "191",
+        "183"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "29",
+          "score": 85,
+          "justification": "This chunk discusses regulatory risks and financial impacts on Ameren Illinois, including revenue requirements and ROE, which are directly relevant to understanding financial impacts, though not specifically weather-related."
+        },
+        {
+          "chunk_uid": "35",
+          "score": 80,
+          "justification": "The chunk addresses risks related to Ameren Missouri's operations, including potential adverse effects on financial position due to coal supply and nuclear energy risks, which could be indirectly related to weather events."
+        },
+        {
+          "chunk_uid": "34",
+          "score": 75,
+          "justification": "This chunk discusses risks related to Ameren's operations, including the impact of severe weather on infrastructure, which is directly relevant to the question about weather-related impacts."
+        },
+        {
+          "chunk_uid": "86",
+          "score": 70,
+          "justification": "The chunk discusses the impact of weather on Ameren's operations, including potential financial implications, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "82",
+          "score": 70,
+          "justification": "This chunk highlights the impact of weather on Ameren's operations, including potential financial effects, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "81",
+          "score": 70,
+          "justification": "The chunk discusses the impact of weather on Ameren's operations, including potential financial implications, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "80",
+          "score": 70,
+          "justification": "This chunk highlights the impact of weather on Ameren's operations, including potential financial effects, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "79",
+          "score": 70,
+          "justification": "The chunk discusses the impact of weather on Ameren's operations, including potential financial implications, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "69",
+          "score": 70,
+          "justification": "This chunk discusses the impact of weather on Ameren's operations, including potential financial effects, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "67",
+          "score": 70,
+          "justification": "The chunk discusses the impact of weather on Ameren's operations, including potential disruptions and financial implications, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "66",
+          "score": 70,
+          "justification": "This chunk highlights the impact of weather on Ameren's operations, including potential financial effects, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "63",
+          "score": 70,
+          "justification": "The chunk discusses the impact of weather on Ameren's operations, including potential financial implications, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "211",
+          "score": 70,
+          "justification": "This chunk highlights the impact of weather on Ameren's operations, including potential financial effects, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "210",
+          "score": 70,
+          "justification": "The chunk discusses the impact of weather on Ameren's operations, including potential financial implications, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "194",
+          "score": 70,
+          "justification": "This chunk highlights the impact of weather on Ameren's operations, including potential financial effects, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "106",
+          "score": 70,
+          "justification": "The chunk discusses the impact of weather on Ameren's operations, including potential financial implications, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "105",
+          "score": 70,
+          "justification": "This chunk highlights the impact of weather on Ameren's operations, including potential financial effects, which is directly relevant to the question."
+        },
+        {
+          "chunk_uid": "273",
+          "score": 50,
+          "justification": "This chunk provides financial metrics and legal matters for Ameren entities but does not address weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "199",
+          "score": 50,
+          "justification": "The chunk discusses regulatory changes affecting Ameren Missouri's revenue, but does not specifically address weather-related impacts."
+        },
+        {
+          "chunk_uid": "195",
+          "score": 50,
+          "justification": "The chunk discusses regulatory frameworks and rate-setting mechanisms but does not specifically address weather-related impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "75",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "62",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "61",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "59",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "38",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "379",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "368",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "349",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "342",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "31",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "275",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "258",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "191",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "183",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "171",
+          "score": 0,
+          "justification": "No justification provided."
+        }
+      ],
+      "top10": [
+        "29",
+        "35",
+        "34",
+        "86",
+        "82",
+        "81",
+        "80",
+        "79",
+        "69",
+        "67"
+      ]
+    },
+    {
+      "round_id": 7,
+      "sampled_chunk_uids": [
+        "275",
+        "206",
+        "260",
+        "82",
+        "267",
+        "22",
+        "349",
+        "355",
+        "38",
+        "264",
+        "368",
+        "86",
+        "374",
+        "344",
+        "153",
+        "123",
+        "202",
+        "62",
+        "205",
+        "21",
+        "83"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "82",
+          "score": 95,
+          "justification": "This chunk directly addresses the impact of weather on Ameren's margins and revenues, providing specific figures and comparisons for 2023, making it highly relevant to the question."
+        },
+        {
+          "chunk_uid": "86",
+          "score": 90,
+          "justification": "The chunk discusses storm-related costs and their impact on Ameren's expenses, which is directly relevant to understanding the financial impact of weather events."
+        },
+        {
+          "chunk_uid": "83",
+          "score": 85,
+          "justification": "This chunk provides detailed information on revenue and margin changes due to cost recovery mechanisms and infrastructure investments, which can be influenced by weather events."
+        },
+        {
+          "chunk_uid": "62",
+          "score": 80,
+          "justification": "The chunk discusses revenue requirements and regulatory decisions affecting Ameren Illinois, which can be indirectly influenced by weather-related events."
+        },
+        {
+          "chunk_uid": "205",
+          "score": 75,
+          "justification": "This chunk covers revenue adjustments and energy-efficiency rates, which can be impacted by weather, though it does not directly mention weather events."
+        },
+        {
+          "chunk_uid": "21",
+          "score": 70,
+          "justification": "The chunk provides electric operating statistics and revenues, which can be affected by weather, but it lacks direct mention of weather-related impacts."
+        },
+        {
+          "chunk_uid": "22",
+          "score": 65,
+          "justification": "The chunk discusses electric operating revenues and sales, which can be influenced by weather, but it does not explicitly mention weather-related impacts."
+        },
+        {
+          "chunk_uid": "123",
+          "score": 60,
+          "justification": "The chunk discusses Ameren's outlook and revenue requirements, which can be indirectly affected by weather, but it lacks direct mention of weather events."
+        },
+        {
+          "chunk_uid": "374",
+          "score": 55,
+          "justification": "This chunk provides a breakdown of electric and gas revenues, which can be influenced by weather, but it does not directly address weather-related impacts."
+        },
+        {
+          "chunk_uid": "153",
+          "score": 50,
+          "justification": "The chunk provides comprehensive financial statements, which can be indirectly affected by weather, but it lacks specific mention of weather-related impacts."
+        },
+        {
+          "chunk_uid": "275",
+          "score": 20,
+          "justification": "The chunk provides financial data on sales and gains, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "206",
+          "score": 15,
+          "justification": "The chunk discusses regulatory actions affecting Ameren Illinois, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "260",
+          "score": 10,
+          "justification": "The chunk provides details on derivative liabilities and collateral, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "38",
+          "score": 5,
+          "justification": "The chunk discusses risks related to cybersecurity, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "368",
+          "score": 5,
+          "justification": "The chunk provides detailed financial statements, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "355",
+          "score": 5,
+          "justification": "The chunk provides a breakdown of liabilities, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "349",
+          "score": 5,
+          "justification": "The chunk discusses restricted cash and accounts receivable, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "344",
+          "score": 5,
+          "justification": "The chunk discusses environmental compliance costs, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "267",
+          "score": 5,
+          "justification": "The chunk provides a breakdown of financial balances, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "264",
+          "score": 5,
+          "justification": "The chunk provides financial data on assets and liabilities, which is not directly related to weather impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "202",
+          "score": 5,
+          "justification": "The chunk discusses regulatory proceedings and energy-efficiency programs, which is not directly related to weather impacts on revenue and margins."
+        }
+      ],
+      "top10": [
+        "82",
+        "86",
+        "83",
+        "62",
+        "205",
+        "21",
+        "22",
+        "123",
+        "374",
+        "153"
+      ]
+    },
+    {
+      "round_id": 8,
+      "sampled_chunk_uids": [
+        "253",
+        "371",
+        "64",
+        "37",
+        "342",
+        "124",
+        "343",
+        "276",
+        "68",
+        "61",
+        "177",
+        "62",
+        "266",
+        "377",
+        "260",
+        "21",
+        "275",
+        "142",
+        "210",
+        "24",
+        "38"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "210",
+          "score": 95,
+          "justification": "This chunk directly addresses the impact of weather-related events on Ameren's financials, specifically mentioning under-recovered costs due to increased demand and prices for natural gas and electricity in February 2021, with specific financial metrics and recovery periods."
+        },
+        {
+          "chunk_uid": "142",
+          "score": 85,
+          "justification": "The chunk discusses Ameren's risk management strategies related to commodity price fluctuations, which can be influenced by weather events, and includes detailed financial disclosures and hedging strategies."
+        },
+        {
+          "chunk_uid": "37",
+          "score": 80,
+          "justification": "This chunk discusses risks related to Ameren's operations, including ESG practices and customer opinions, which can be indirectly affected by weather-related events, though it lacks direct financial impact data."
+        },
+        {
+          "chunk_uid": "21",
+          "score": 75,
+          "justification": "The chunk provides detailed electric operating statistics and revenues, which can be influenced by weather-related demand changes, but does not explicitly link these to weather events."
+        },
+        {
+          "chunk_uid": "61",
+          "score": 70,
+          "justification": "The chunk outlines revenue requirements and rate base adjustments, which can be indirectly affected by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "62",
+          "score": 65,
+          "justification": "This chunk discusses regulatory decisions affecting Ameren Illinois' revenue, which can be influenced by weather-related demand changes, but does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "64",
+          "score": 60,
+          "justification": "The chunk details capital expenditures, which can be indirectly influenced by weather-related infrastructure needs, but does not directly address weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "68",
+          "score": 55,
+          "justification": "The chunk provides financial data on net income and earnings per share, which can be affected by weather-related events, but lacks direct mention of such impacts."
+        },
+        {
+          "chunk_uid": "177",
+          "score": 50,
+          "justification": "This chunk provides a comprehensive view of Ameren's financial performance, which can be influenced by weather-related events, but does not directly address weather impacts."
+        },
+        {
+          "chunk_uid": "124",
+          "score": 45,
+          "justification": "The chunk discusses regulatory impacts on Ameren's operations, which can be indirectly influenced by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "253",
+          "score": 40,
+          "justification": "The chunk provides operational data on commodity usage, which can be influenced by weather-related demand changes, but does not directly address weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "371",
+          "score": 35,
+          "justification": "The chunk provides a breakdown of financial metrics for Ameren Illinois entities, which can be influenced by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "342",
+          "score": 30,
+          "justification": "The chunk provides financial metrics for Ameren Missouri and Ameren Illinois, which can be influenced by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "377",
+          "score": 25,
+          "justification": "The chunk provides revenue figures for Ameren's segments, which can be influenced by weather-related events, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "276",
+          "score": 20,
+          "justification": "The chunk provides details on investments in Ameren's nuclear decommissioning trust fund, which is not directly related to weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "266",
+          "score": 15,
+          "justification": "The chunk provides a fair value reconciliation of derivative contract assets and liabilities, which is not directly related to weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "260",
+          "score": 10,
+          "justification": "The chunk provides details on derivative liabilities and collateral, which is not directly related to weather impacts on revenue or margins."
+        },
+        {
+          "chunk_uid": "24",
+          "score": 5,
+          "justification": "The chunk provides electric operating statistics for Ameren Missouri, which can be influenced by weather-related demand changes, but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "38",
+          "score": 0,
+          "justification": "The chunk discusses cybersecurity risks, which are not directly related to weather impacts on Ameren's revenue or margins."
+        },
+        {
+          "chunk_uid": "343",
+          "score": 0,
+          "justification": "The chunk contains a non-substantive disclosure without specific context or relevance to weather impacts on Ameren's revenue or margins."
+        },
+        {
+          "chunk_uid": "275",
+          "score": 0,
+          "justification": "No justification provided."
+        }
+      ],
+      "top10": [
+        "210",
+        "142",
+        "37",
+        "21",
+        "61",
+        "62",
+        "64",
+        "68",
+        "177",
+        "124"
+      ]
+    },
+    {
+      "round_id": 9,
+      "sampled_chunk_uids": [
+        "171",
+        "398",
+        "128",
+        "80",
+        "30",
+        "269",
+        "34",
+        "356",
+        "210",
+        "399",
+        "31",
+        "371",
+        "264",
+        "374",
+        "58",
+        "346",
+        "207",
+        "267",
+        "63",
+        "83",
+        "260"
+      ],
+      "scored": [
+        {
+          "chunk_uid": "80",
+          "score": 95,
+          "justification": "This card directly addresses the impact of weather on Ameren's revenue and margins, specifically mentioning changes in transmission electric margins and the impact of weather on demand. It is part of the MD&A section, providing strong evidence."
+        },
+        {
+          "chunk_uid": "210",
+          "score": 90,
+          "justification": "The card discusses under-recovered costs due to increased demand and prices for natural gas and electricity, which can be influenced by weather events. It provides specific financial metrics and recovery periods, making it relevant to the question."
+        },
+        {
+          "chunk_uid": "83",
+          "score": 85,
+          "justification": "This card discusses changes in margins and revenues, including specific revenue changes due to cost recovery mechanisms and sales volumes, which can be affected by weather. It includes numeric data and is part of the MD&A section."
+        },
+        {
+          "chunk_uid": "63",
+          "score": 80,
+          "justification": "The card covers Ameren's operations and financial metrics, including net income and dividend increases, which can be indirectly affected by weather-related events. It is part of the MD&A section, providing substantive information."
+        },
+        {
+          "chunk_uid": "34",
+          "score": 75,
+          "justification": "This card discusses operational risks, including coal supply issues, which can be influenced by weather events. It is part of the Risk Factors section, providing relevant context for understanding potential impacts on revenue and margins."
+        },
+        {
+          "chunk_uid": "128",
+          "score": 70,
+          "justification": "The card discusses Ameren's planned capital expenditures and regulatory actions, which can be indirectly affected by weather-related events. It includes financial estimates and is part of the MD&A section."
+        },
+        {
+          "chunk_uid": "31",
+          "score": 65,
+          "justification": "This card discusses legal and regulatory challenges, including environmental compliance costs, which can be influenced by weather events. It is part of the MD&A section, providing relevant context."
+        },
+        {
+          "chunk_uid": "58",
+          "score": 60,
+          "justification": "The card discusses a regulatory order increasing Ameren Missouri's annual revenue requirement, which can be indirectly affected by weather-related events. It includes financial figures and is part of the Other section."
+        },
+        {
+          "chunk_uid": "374",
+          "score": 55,
+          "justification": "This card provides a breakdown of Ameren's electric and gas revenues, which can be influenced by weather events. It includes numeric data but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "346",
+          "score": 50,
+          "justification": "The card discusses regulatory and compliance activities, including environmental compliance, which can be influenced by weather events. It includes financial implications but lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "171",
+          "score": 40,
+          "justification": "This card provides a detailed breakdown of cash flows and financial performance, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "398",
+          "score": 35,
+          "justification": "The card provides a condensed statement of cash flows, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "269",
+          "score": 30,
+          "justification": "This card provides fair value measurements for commodities, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "356",
+          "score": 25,
+          "justification": "The card provides details on various financial metrics and liabilities, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "264",
+          "score": 20,
+          "justification": "This card provides detailed financial data on assets and liabilities, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "267",
+          "score": 15,
+          "justification": "The card provides a detailed breakdown of financial balances and changes, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "260",
+          "score": 10,
+          "justification": "This card provides details on derivative liabilities and collateral, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "399",
+          "score": 5,
+          "justification": "The card discusses short-term debt and liquidity management, which can be indirectly affected by weather events. However, it lacks direct mention of weather impacts."
+        },
+        {
+          "chunk_uid": "371",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "30",
+          "score": 0,
+          "justification": "No justification provided."
+        },
+        {
+          "chunk_uid": "207",
+          "score": 0,
+          "justification": "No justification provided."
+        }
+      ],
+      "top10": [
+        "80",
+        "210",
+        "83",
+        "63",
+        "34",
+        "128",
+        "31",
+        "58",
+        "374",
+        "346"
+      ]
+    }
+  ]
+}
