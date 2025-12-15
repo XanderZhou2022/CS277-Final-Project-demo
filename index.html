@@ -3916,32 +3916,24 @@
             stage4SelectedChunkId = chunkId;
             renderApp();
             
-            // Scroll to first highlighted sentence in answer
+            // Scroll to first highlighted sentence in answer and evidence paragraph (user clicked, so we should scroll)
             setTimeout(() => {
                 const highlightedSentence = document.querySelector('.sentence-segment.chunk-highlighted');
                 if (highlightedSentence) {
                     highlightedSentence.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
                 
-                // Also scroll to corresponding evidence paragraph
-                const paragraphEl = document.querySelector(`.evidence-paragraph[data-chunk-id="${chunkId}"]`);
-                if (paragraphEl) {
-                    setTimeout(() => {
-                        paragraphEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 300);
-                }
+                // Scroll to corresponding evidence paragraph
+                highlightSelectedChunk(normalizeChunkId(chunkId), true);
             }, 100);
         }
 
         function handleStage4CitationClick(chunkId) {
             stage4SelectedChunkId = chunkId;
             renderApp();
-            // Scroll to corresponding evidence paragraph and highlight citation in answer
+            // Scroll to corresponding evidence paragraph and highlight citation in answer (user clicked, so we should scroll)
             setTimeout(() => {
-                const paragraphEl = document.querySelector(`.evidence-paragraph[data-chunk-id="${chunkId}"]`);
-                if (paragraphEl) {
-                    paragraphEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                highlightSelectedChunk(normalizeChunkId(chunkId), true);
             }, 100);
         }
 
@@ -4691,6 +4683,61 @@
             eventListEl.scrollTop = finalScrollTop;
         }
 
+        function scrollRankingChunkIntoView() {
+            // Scroll the second chunk (pair.b) in the ranking list to visible area
+            if (stage3ActiveEventId === null || stage3ActiveEventId < 0 || !stage3Trace || !stage3Trace.events) return;
+            
+            const activeEvent = stage3Trace.events[stage3ActiveEventId];
+            if (!activeEvent || !activeEvent.pair || !activeEvent.pair.b) return;
+            
+            const rankingListEl = document.getElementById('rankingList');
+            if (!rankingListEl) return;
+            
+            const chunkBId = normalizeChunkId(activeEvent.pair.b);
+            const chunkBEl = rankingListEl.querySelector(`[data-chunk-id="${chunkBId}"]`);
+            
+            if (!chunkBEl) return;
+            
+            // Get current scroll position
+            const currentScrollTop = rankingListEl.scrollTop;
+            const containerHeight = rankingListEl.clientHeight;
+            
+            // Find all rank rows to calculate relative position
+            const allRankRows = rankingListEl.querySelectorAll('.rank-row');
+            let elementOffsetTop = 0;
+            
+            // Calculate offset by summing heights of previous siblings
+            for (let i = 0; i < allRankRows.length; i++) {
+                if (allRankRows[i] === chunkBEl) {
+                    break;
+                }
+                elementOffsetTop += allRankRows[i].offsetHeight;
+            }
+            
+            // Calculate target scroll position to center the element
+            const elementHeight = chunkBEl.offsetHeight;
+            const targetScrollTop = elementOffsetTop - (containerHeight / 2) + (elementHeight / 2);
+            
+            // Clamp to valid scroll range
+            const maxScrollTop = rankingListEl.scrollHeight - containerHeight;
+            const finalScrollTop = Math.max(0, Math.min(targetScrollTop, maxScrollTop));
+            
+            // Check if element is already visible in the current viewport
+            const visibleTop = currentScrollTop;
+            const visibleBottom = currentScrollTop + containerHeight;
+            const elementTop = elementOffsetTop;
+            const elementBottom = elementOffsetTop + elementHeight;
+            
+            // Check if element is already visible
+            if (elementTop >= visibleTop && elementBottom <= visibleBottom) {
+                // Element is already visible, no need to scroll
+                return;
+            }
+            
+            // Direct jump to center the element (instant, no animation)
+            rankingListEl.scrollTop = finalScrollTop;
+        }
+
         function handleStage3ChunkClick(chunkId) {
             if (!stage3Trace || !stage3Trace.events) return;
             const events = stage3Trace.events;
@@ -5012,6 +5059,8 @@
             if (stage3ActiveEventId !== null) {
                 setTimeout(() => {
                     scrollEventIntoView();
+                    // Also scroll the second chunk (pair.b) in the ranking list to visible area
+                    scrollRankingChunkIntoView();
                 }, 100);
             }
         }
@@ -5314,8 +5363,13 @@
             `;
 
             // Highlight citations and chunks on load if chunk is selected
+            // Note: We only highlight, don't scroll here to avoid continuous scrolling on re-renders
             if (stage4SelectedChunkId) {
-                highlightSelectedChunk(stage4SelectedChunkId);
+                // Only highlight citations, don't scroll
+                const citationLinks = document.querySelectorAll(`.citation-link[data-chunk-id="${normalizeChunkId(stage4SelectedChunkId)}"]`);
+                citationLinks.forEach(link => {
+                    link.classList.add('citation-highlighted');
+                });
             }
         }
 
@@ -5598,17 +5652,19 @@
             return result;
         }
 
-        function highlightSelectedChunk(chunkId) {
+        function highlightSelectedChunk(chunkId, shouldScroll = true) {
             // Highlight citations in answer
             const citationLinks = document.querySelectorAll(`.citation-link[data-chunk-id="${chunkId}"]`);
             citationLinks.forEach(link => {
                 link.classList.add('citation-highlighted');
             });
 
-            // Scroll to evidence paragraph
-            const paragraphEl = document.querySelector(`.evidence-paragraph[data-chunk-id="${chunkId}"]`);
-            if (paragraphEl) {
-                paragraphEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Scroll to evidence paragraph only if explicitly requested (e.g., on user click)
+            if (shouldScroll) {
+                const paragraphEl = document.querySelector(`.evidence-paragraph[data-chunk-id="${chunkId}"]`);
+                if (paragraphEl) {
+                    paragraphEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }
         }
 
