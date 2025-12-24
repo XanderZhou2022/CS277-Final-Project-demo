@@ -1,0 +1,102 @@
+{
+  "baseline_results": {
+    "classical_ir": [
+      {
+        "method": "BM25 (Raw Text)",
+        "ndcg5": 0.285,
+        "map5": 0.312,
+        "mrr5": 0.425
+      },
+      {
+        "method": "BM25 (Card Fields)",
+        "ndcg5": 0.328,
+        "map5": 0.378,
+        "mrr5": 0.487
+      }
+    ],
+    "finagentbench": [
+      {
+        "method": "GPT-o3",
+        "ndcg5": 0.351,
+        "map5": 0.257,
+        "mrr5": 0.538
+      },
+      {
+        "method": "Claude-Opus-4",
+        "ndcg5": 0.418,
+        "map5": 0.307,
+        "mrr5": 0.568
+      },
+      {
+        "method": "Claude-Sonnet-4",
+        "ndcg5": 0.419,
+        "map5": 0.296,
+        "mrr5": 0.567
+      }
+    ],
+    "our_pipeline": [
+      {
+        "method": "V1: Baseline (Prompt)",
+        "ndcg5": 0.4225,
+        "map5": 0.6892,
+        "mrr5": 0.7107
+      },
+      {
+        "method": "V2: Auditable + Robust",
+        "ndcg5": 0.4381,
+        "map5": 0.6979,
+        "mrr5": 0.7334
+      },
+      {
+        "method": "V3: Full Pipeline",
+        "ndcg5": 0.4618,
+        "map5": 0.7114,
+        "mrr5": 0.7659
+      }
+    ]
+  },
+  "ablation_results": [
+    {
+      "variant": "V3: Full Pipeline",
+      "ndcg5": 0.4618,
+      "map5": 0.7114,
+      "mrr5": 0.7659,
+      "description": "Complete pipeline with all components"
+    },
+    {
+      "variant": "w/o Auditable Tracing (Stage I)",
+      "ndcg5": 0.4592,
+      "map5": 0.7089,
+      "mrr5": 0.7621,
+      "description": "Removed explicit decision tracing and justification recording"
+    },
+    {
+      "variant": "w/o Stability Validation (Stage II)",
+      "ndcg5": 0.4287,
+      "map5": 0.6812,
+      "mrr5": 0.7245,
+      "description": "Removed multi-round random sampling and aggregation"
+    },
+    {
+      "variant": "w/o Pairwise Referee (Stage III)",
+      "ndcg5": 0.4381,
+      "map5": 0.6979,
+      "mrr5": 0.7334,
+      "description": "Removed near-neighbor pairwise adjudication"
+    },
+    {
+      "variant": "w/o Alignment Scoring",
+      "ndcg5": 0.4493,
+      "map5": 0.7035,
+      "mrr5": 0.7512,
+      "description": "Removed entity/metric/temporal alignment scoring"
+    },
+    {
+      "variant": "w/o Diversity Constraints",
+      "ndcg5": 0.4556,
+      "map5": 0.7068,
+      "mrr5": 0.7598,
+      "description": "Removed diversity control to prevent redundancy"
+    }
+  ]
+}

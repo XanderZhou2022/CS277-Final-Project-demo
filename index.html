@@ -2806,6 +2806,124 @@
                 max-height: 400px;
             }
         }
+
+        /* Results Page Styles */
+        .results-container {
+            padding: 24px 0;
+        }
+
+        .results-header {
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+
+        .results-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .results-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+        }
+
+        .results-section {
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+
+        .results-section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .results-table thead {
+            background-color: #f9fafb;
+        }
+
+        .results-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 14px;
+        }
+
+        .results-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #1f2937;
+        }
+
+        .results-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .results-table .method-name {
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .results-table .metric-value {
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .results-table .best-metric {
+            background-color: #dbeafe;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        .ablation-variant {
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .ablation-description {
+            font-size: 13px;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .baseline-category {
+            margin-top: 32px;
+        }
+
+        .baseline-category:first-child {
+            margin-top: 0;
+        }
+
+        .category-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background-color: #f3f4f6;
+            border-radius: 6px;
+        }
     </style>
 </head>
 <body>
@@ -2977,10 +3095,18 @@
         // Stage 4 state
         let stage4Data = null;
         let stage4SelectedChunkId = null;
+        // Results state
+        let resultsData = null;
 
         // Render functions
         function renderApp() {
             const app = document.getElementById('app');
+            
+            // Render Results page
+            if (currentPage === 'results') {
+                renderResultsPage();
+                return;
+            }
             
             // Render Stage 4 page
             if (currentPage === 'stage4') {
@@ -3903,6 +4029,40 @@
                         document.getElementById('app').innerHTML = `
                             <div class="app-error">
                                 <p>Error loading Stage 4 data: ${error.message}</p>
+                                <button class="btn btn-primary" onclick="handleNavigateToHome()" style="margin-top: 20px;">Back to Home</button>
+                            </div>
+                        `;
+                    });
+            } else {
+                renderApp();
+            }
+        }
+
+        async function loadResultsData() {
+            try {
+                const response = await fetch('data_overview/results.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load results data: ${response.statusText}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading results data:', error);
+                throw error;
+            }
+        }
+
+        function handleNavigateToResults() {
+            currentPage = 'results';
+            if (!resultsData) {
+                loadResultsData()
+                    .then(data => {
+                        resultsData = data;
+                        renderApp();
+                    })
+                    .catch(error => {
+                        document.getElementById('app').innerHTML = `
+                            <div class="app-error">
+                                <p>Error loading results data: ${error.message}</p>
                                 <button class="btn btn-primary" onclick="handleNavigateToHome()" style="margin-top: 20px;">Back to Home</button>
                             </div>
                         `;
@@ -5239,6 +5399,7 @@
                         <div class="header-info">
                             <button class="btn btn-secondary" onclick="handleNavigateToHome()">Home</button>
                             <button class="btn btn-secondary" onclick="handleNavigateToStage3()">Stage 3</button>
+                            <button class="btn btn-primary" onclick="handleNavigateToResults()">Results</button>
                         </div>
                     </div>
                 </header>
@@ -5371,6 +5532,181 @@
                     link.classList.add('citation-highlighted');
                 });
             }
+        }
+
+        // Results page render function
+        function renderResultsPage() {
+            const app = document.getElementById('app');
+            
+            if (!resultsData) {
+                app.innerHTML = '<div class="app-loading">Loading results data...</div>';
+                return;
+            }
+
+            const baselineResults = resultsData.baseline_results || {};
+            const ablationResults = resultsData.ablation_results || [];
+
+            // Find best metrics for highlighting
+            const allMethods = [
+                ...(baselineResults.classical_ir || []),
+                ...(baselineResults.finagentbench || []),
+                ...(baselineResults.our_pipeline || [])
+            ];
+
+            const bestNdcg5 = Math.max(...allMethods.map(m => m.ndcg5 || 0));
+            const bestMap5 = Math.max(...allMethods.map(m => m.map5 || 0));
+            const bestMrr5 = Math.max(...allMethods.map(m => m.mrr5 || 0));
+
+            const fullPipelineNdcg5 = ablationResults.find(r => r.variant === 'V3: Full Pipeline')?.ndcg5 || 0.4618;
+
+            app.innerHTML = `
+                <header class="app-header">
+                    <div class="container">
+                        <h1>Results — Baseline Comparison & Ablation Study</h1>
+                        <div class="header-info">
+                            <button class="btn btn-secondary" onclick="handleNavigateToHome()">Home</button>
+                            <button class="btn btn-secondary" onclick="handleNavigateToStage4()">Stage 4</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="app-main">
+                    <div class="container">
+                        <div class="results-container">
+                            <!-- Header Section -->
+                            <div class="results-header">
+                                <h2 class="results-title">Experimental Results</h2>
+                                <p class="results-subtitle">Performance comparison across baselines and ablation study results</p>
+                            </div>
+
+                            <!-- Baseline Comparison Section -->
+                            <div class="results-section">
+                                <h3 class="results-section-title">Baseline Comparison</h3>
+                                
+                                ${baselineResults.classical_ir ? `
+                                    <div class="baseline-category">
+                                        <div class="category-label">Classical IR Baselines</div>
+                                        <table class="results-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Method</th>
+                                                    <th>nDCG@5</th>
+                                                    <th>MAP@5</th>
+                                                    <th>MRR@5</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${baselineResults.classical_ir.map(method => `
+                                                    <tr>
+                                                        <td class="method-name">${escapeHtml(method.method)}</td>
+                                                        <td class="metric-value ${method.ndcg5 === bestNdcg5 ? 'best-metric' : ''}">${method.ndcg5.toFixed(4)}</td>
+                                                        <td class="metric-value ${method.map5 === bestMap5 ? 'best-metric' : ''}">${method.map5.toFixed(4)}</td>
+                                                        <td class="metric-value ${method.mrr5 === bestMrr5 ? 'best-metric' : ''}">${method.mrr5.toFixed(4)}</td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ` : ''}
+
+                                ${baselineResults.finagentbench ? `
+                                    <div class="baseline-category">
+                                        <div class="category-label">FinAgentBench Baselines</div>
+                                        <table class="results-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Method</th>
+                                                    <th>nDCG@5</th>
+                                                    <th>MAP@5</th>
+                                                    <th>MRR@5</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${baselineResults.finagentbench.map(method => `
+                                                    <tr>
+                                                        <td class="method-name">${escapeHtml(method.method)}</td>
+                                                        <td class="metric-value ${method.ndcg5 === bestNdcg5 ? 'best-metric' : ''}">${method.ndcg5.toFixed(4)}</td>
+                                                        <td class="metric-value ${method.map5 === bestMap5 ? 'best-metric' : ''}">${method.map5.toFixed(4)}</td>
+                                                        <td class="metric-value ${method.mrr5 === bestMrr5 ? 'best-metric' : ''}">${method.mrr5.toFixed(4)}</td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ` : ''}
+
+                                ${baselineResults.our_pipeline ? `
+                                    <div class="baseline-category">
+                                        <div class="category-label">Our Zero-shot Pipeline Variants</div>
+                                        <table class="results-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Method</th>
+                                                    <th>nDCG@5</th>
+                                                    <th>MAP@5</th>
+                                                    <th>MRR@5</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${baselineResults.our_pipeline.map(method => `
+                                                    <tr>
+                                                        <td class="method-name">${escapeHtml(method.method)}</td>
+                                                        <td class="metric-value ${method.ndcg5 === bestNdcg5 ? 'best-metric' : ''}">${method.ndcg5.toFixed(4)}</td>
+                                                        <td class="metric-value ${method.map5 === bestMap5 ? 'best-metric' : ''}">${method.map5.toFixed(4)}</td>
+                                                        <td class="metric-value ${method.mrr5 === bestMrr5 ? 'best-metric' : ''}">${method.mrr5.toFixed(4)}</td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ` : ''}
+                            </div>
+
+                            <!-- Ablation Study Section -->
+                            <div class="results-section">
+                                <h3 class="results-section-title">Ablation Study</h3>
+                                <p style="color: #6b7280; margin-bottom: 24px;">
+                                    Impact of removing individual components from the full pipeline (V3). Each row shows performance when the specified component is removed.
+                                </p>
+                                <table class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 35%;">Variant</th>
+                                            <th>nDCG@5</th>
+                                            <th>MAP@5</th>
+                                            <th>MRR@5</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${ablationResults.map(result => {
+                                            const isFullPipeline = result.variant === 'V3: Full Pipeline';
+                                            const deltaNdcg = result.ndcg5 - fullPipelineNdcg5;
+                                            return `
+                                                <tr>
+                                                    <td>
+                                                        <div class="ablation-variant ${isFullPipeline ? 'best-metric' : ''}">${escapeHtml(result.variant)}</div>
+                                                        ${result.description ? `
+                                                            <div class="ablation-description">${escapeHtml(result.description)}</div>
+                                                        ` : ''}
+                                                    </td>
+                                                    <td class="metric-value ${isFullPipeline ? 'best-metric' : ''}">
+                                                        ${result.ndcg5.toFixed(4)}
+                                                        ${!isFullPipeline && deltaNdcg < 0 ? `
+                                                            <span style="color: #dc2626; font-size: 12px;">(${deltaNdcg.toFixed(4)})</span>
+                                                        ` : ''}
+                                                    </td>
+                                                    <td class="metric-value ${isFullPipeline ? 'best-metric' : ''}">${result.map5.toFixed(4)}</td>
+                                                    <td class="metric-value ${isFullPipeline ? 'best-metric' : ''}">${result.mrr5.toFixed(4)}</td>
+                                                </tr>
+                                            `;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
         }
 
         function renderAnswerWithProvenance(answerText, sentenceProvenance, contributions) {

@@ -53,3 +53,7 @@ export default function ChunkDetailPanel({ chunk, onClose }) {
   );
 }
 
+
+
+
+
