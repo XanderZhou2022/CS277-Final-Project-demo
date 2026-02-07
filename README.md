@@ -1,6 +1,6 @@
 # Financial Filing Evidence Selection Demo
 
-A pure HTML/CSS/JavaScript single-page application for visualizing the step-by-step process of evidence selection from financial filing documents.
+A pure HTML/CSS/JavaScript single-page application for visualizing the step-by-step process of evidence selection from financial filing documents. 
 
 ## Features
 
@@ -15,11 +15,12 @@ A pure HTML/CSS/JavaScript single-page application for visualizing the step-by-s
 **No installation required!** This is a pure HTML/CSS/JavaScript application.
 
 1. **Ensure data files are accessible:**
+   
    - The HTML file expects JSON files in `data_overview/` directory relative to the HTML file
    - Files needed:
      - `data_overview/chunk_special_transformed.json`
      - `data_overview/cards.json`
-
+   
 2. **Open the application:**
    - Simply open `index.html` in a web browser
    - Or use a local web server (recommended for loading JSON files):
